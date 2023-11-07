@@ -1,5 +1,23 @@
+:root {
+  --yellow-100: #FFE16B;
+  --yellow-200: #FFCD51;
+  --yellow-300: #FFB638;
+  --blue-100: #79A3E2;
+  --blue-200: #4F86D8;
+  --blue-300: #23549F;
+  --blue-400: #11284B;
+  --blue-500: #050B15;
+  --white-100: #F7F9FD;
+  --white-200: #EBEFF9;
+  --white-300: #D8E0F3;
+  --white-400: #C4D1ED;
+  --white-500: #B1C1E7;
+  --red: #ED3E18;
+}
+
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
