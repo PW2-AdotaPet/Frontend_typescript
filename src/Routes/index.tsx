@@ -1,12 +1,12 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-
+import Home from "../Components/Pages/Home";
 
 function RoutesContent() {
   return (
     <Routes>
-      <Route exact path="/" element={}/>
-      <Route exact path="adota" element={}/>
+      <Route path="/" element={<Navigate to="/adotar" replace/>} /> {/*Isso aqui é temporario, apenas para redirecionar para rota adotar*/}
+      <Route path="/adotar" element={<Home />}/>
     </Routes>
   );
 }

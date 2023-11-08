@@ -9,17 +9,17 @@ function NavBar() {
     const list = [
         {
           Icon: BiSearch,
-          link: "/adota",
+          link: "/adotar",
           namePage: "Adotar",
         },
         {
           Icon: PiPawPrint,
-          link: "/",
+          link: "/doar",
           namePage: "Doar",
         },
         {
           Icon: BiHeart,
-          link: "/fav",
+          link: "/favorito",
           namePage: "Favoritos",
         },
       ];
