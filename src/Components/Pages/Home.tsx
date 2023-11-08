@@ -1,11 +1,12 @@
 import Container from "../Layouts/Container";
+import InfoMessage from "../Layouts/InfoMessage";
 import SearchBar from "../Layouts/SearchBar";
 
 function Home() {
     return (
         <Container customClass="column">
             <SearchBar />
-            <h1>Home</h1>
+            <InfoMessage message="Pesquise por algum animal"/>
         </Container>
     )
 }
