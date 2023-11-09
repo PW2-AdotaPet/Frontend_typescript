@@ -1,31 +1,31 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import { BiHeart, BiSearch, BiUser } from "react-icons/bi";
 import { PiPawPrint } from "react-icons/pi";
 
-import Style from "./style.module.css"
+import Style from "./style.module.css";
 import NavItem from "./NavItem";
 
 function NavBar() {
-    const list = [
-        {
-          Icon: BiSearch,
-          link: "/adotar",
-          namePage: "Adotar",
-        },
-        {
-          Icon: PiPawPrint,
-          link: "/doar",
-          namePage: "Doar",
-        },
-        {
-          Icon: BiHeart,
-          link: "/favorito",
-          namePage: "Favoritos",
-        },
-      ];
+  const list = [
+    {
+      Icon: BiSearch,
+      link: "/adotar",
+      namePage: "Adotar",
+    },
+    {
+      Icon: PiPawPrint,
+      link: "/doar",
+      namePage: "Doar",
+    },
+    {
+      Icon: BiHeart,
+      link: "/favorito",
+      namePage: "Favoritos",
+    },
+  ];
 
-    return (
-        <nav className={Style.container}>
+  return (
+    <nav className={Style.container}>
       <div className={Style.navLinks}>
         <h3>Logo</h3>
         <div className={Style.items}>
@@ -49,7 +49,7 @@ function NavBar() {
         </NavLink>
       </div>
     </nav>
-    )
+  );
 }
 
-export default NavBar
+export default NavBar;
