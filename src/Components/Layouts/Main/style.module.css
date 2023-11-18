@@ -1,26 +1,36 @@
 .container {
-    width: 100%;
-    height: 100%;
-    padding: 0.75em;
-    border: 2px solid var(--white-300);
-    border-radius: 1.5em;
-    background: var(--white-100);
+  width: 100%;
+  height: 100%;
+  padding: 0.75em;
+  border: 2px solid var(--white-300);
+  border-radius: 1.5em;
+  background: var(--white-100);
+  box-sizing: border-box;
 }
 
 .scroll {
-    overflow-y: scroll;
+  overflow-y: scroll;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.75em;
+  flex: 1 0 0;
 }
 
 .scroll::-webkit-scrollbar {
-    width: 1em;
+  width: 1em;
 }
 
 .scroll::-webkit-scrollbar-track {
-    background: none;
+  background: none;
 }
 
 .scroll::-webkit-scrollbar-thumb {
-    background: var(--white-300);
-    border: 0.27em solid var(--white-100);
-    border-radius: 0.5em;
+  background: var(--white-300);
+  border: 0.27em solid var(--white-100);
+  border-radius: 0.5em;
 }

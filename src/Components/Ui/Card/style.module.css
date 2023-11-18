@@ -21,10 +21,12 @@
     width: 100%;
 }
 
-.infoTemplate img {
+.image {
     height: 178px;
     border-radius: 4px;
     flex: 1 0 0;
+    background-size: cover;
+    background-position: center;
 }
 
 .Pet {

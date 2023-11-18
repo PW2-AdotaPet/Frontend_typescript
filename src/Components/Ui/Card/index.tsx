@@ -4,7 +4,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { MdArrowForwardIos } from "react-icons/md";
 
 import Style from "./style.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Card({ data }: any) {
   const [isSpan, setIsSpan] = useState(false);
@@ -16,7 +16,10 @@ function Card({ data }: any) {
   return (
     <div className={`${Style.container} ${isSpan ? Style.span : ""}`}>
       <div className={Style.infoTemplate}>
-        <img src={data.image} alt={data.raca} />
+        <div
+          className={Style.image}
+          style={{ backgroundImage: `url(${data.image})` }}
+        ></div>
         <div className={Style.Pet}>
           <div className={Style.infoPet}>
             <div>
@@ -44,7 +47,7 @@ function Card({ data }: any) {
             <AiOutlineHeart size={24} />
           </div>
           <div className={`${Style.buttons} ${isSpan ? Style.rotate : ""}`}>
-            <Link to="/">Adotar</Link>
+            <NavLink to="/pet" state={data}>Adotar</NavLink>
             <button onClick={span}>
               <MdArrowForwardIos size={24} />
             </button>

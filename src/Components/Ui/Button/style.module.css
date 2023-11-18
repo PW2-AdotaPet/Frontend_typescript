@@ -1,0 +1,32 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    gap: 0.75em;
+    height: 4em;
+    padding: 1em;
+    border: none;
+    border-radius: 0.75em;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1em;
+    cursor: pointer;
+}
+
+.success {
+    background: var(--blue-200);
+    color: var(--white-200);
+}
+
+.outline {
+    background: var(--white-200);
+    color: var(--blue-200);
+    border: 2px solid var(--blue-200);
+}
+
+.danger {
+    background: var(--red);
+    color: var(--white-200);
+}
