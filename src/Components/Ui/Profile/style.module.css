@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.image {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.buttonEdit {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--yellow-300);
+    border-radius: 100%;
+    color: var(--white-100);
+    position: relative;
+    bottom: 30px;
+    right: 5px;
+}

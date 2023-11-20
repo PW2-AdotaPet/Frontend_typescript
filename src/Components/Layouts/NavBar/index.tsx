@@ -42,7 +42,7 @@ function NavBar() {
       <div className={Style.account}>
         <NavLink
           className={({ isActive }) => (isActive ? Style.active : "")}
-          to="/lif"
+          to="/conta"
         >
           <BiUser size={24} />
           Conta
