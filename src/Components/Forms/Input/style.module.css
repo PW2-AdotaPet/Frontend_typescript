@@ -38,4 +38,6 @@
     font-weight: 400;
     line-height: 1em;
     color: var(--blue-500);
+    width: 100%;
+    outline: none;
 }

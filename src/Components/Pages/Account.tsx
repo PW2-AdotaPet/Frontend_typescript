@@ -7,7 +7,7 @@ import Container from "../Layouts/Container";
 import DividerContainer from "../Layouts/DividerContainer";
 import Button from "../Ui/Button";
 import Profile from "../Ui/Profile";
-import Input from "../Form/Input";
+import Input from "../Forms/Input";
 
 function Account() {
   const teste = {
@@ -58,7 +58,7 @@ function Account() {
       </DividerContainer>
       <DividerContainer customClass="column">
         {inputs.map((element: any, index: number) => (
-          <Input name={element.name} Icon={element.icon} value={element.value} key={index} />
+          <Input name={element.name} Icon={element.icon} status={true} value={element.value} key={index} />
         ))}
       </DividerContainer>
       <DividerContainer>
