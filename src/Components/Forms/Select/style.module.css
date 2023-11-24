@@ -1,23 +1,37 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+    gap: 0.75em;
+    align-self: stretch;
+    flex: 0 0 calc(50% - 0.375em);
+}
+
+.container label {
+    color: var(--blue-500);
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container select {
+    display: flex;
     align-items: center;
-    gap: 0.75em;
-    flex: 1 0 0;
+    align-self: stretch;
+    padding: 1em;
+    border: 2px solid var(--blue-200);
+    border-radius: 0.75em;
+    outline: none;
+    color: var(--blue-100);
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75em;
-    align-self: stretch;
-}
-
-.conatiner div label {
-    display: flex;
-    padding: 0 0.5em;
-    align-items: flex-start;
-    align-self: stretch;
+.container select option {
+    font-size: 1.2em;
+    color: var(--blue-500);
 }
