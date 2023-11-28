@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom"
 import Style from "./style.module.css";
 import DividerContainer from "../../Layouts/DividerContainer";
 import Button from "../Button";
 
 function InformationPet({ data }: any) {
+  const navigate = useNavigate()
+
+  function goBack() {
+    navigate("/adotar")
+  }
+  
   return (
     <>
       <DividerContainer>
@@ -86,7 +93,7 @@ function InformationPet({ data }: any) {
         ></div>
       </DividerContainer>
       <DividerContainer>
-        <Button name="Cancelar" customClass="outline" />
+        <Button name="Cancelar" customClass="outline" handle={goBack} />
         <Button name="Adotar" customClass="success" />
       </DividerContainer>
     </>

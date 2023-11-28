@@ -15,9 +15,8 @@
     line-height: normal;
 }
 
-.container select {
+.container input {
     display: flex;
-    align-items: center;
     align-self: stretch;
     padding: 1em;
     border: 2px solid var(--white-400);
@@ -31,7 +30,6 @@
     cursor: pointer;
 }
 
-.container select option {
-    font-size: 1.2em;
-    color: var(--blue-500);
+.container input::placeholder {
+    color: var(--blue-100);
 }
