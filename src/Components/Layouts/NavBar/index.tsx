@@ -19,7 +19,7 @@ function NavBar() {
     },
     {
       Icon: BiHeart,
-      link: "/favorito",
+      link: "/favoritos",
       namePage: "Favoritos",
     },
   ];

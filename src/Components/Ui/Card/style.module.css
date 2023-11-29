@@ -63,7 +63,7 @@
     font-weight: 700;
 }
 
-.infoPet svg {
+.infoPet .icon {
     color: var(--red);
     cursor: pointer;
 }

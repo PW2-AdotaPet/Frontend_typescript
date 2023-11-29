@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdArrowForwardIos } from "react-icons/md";
 
 import Style from "./style.module.css";
@@ -8,9 +8,14 @@ import { NavLink } from "react-router-dom";
 
 function Card({ data }: any) {
   const [isSpan, setIsSpan] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const span = () => {
     setIsSpan(!isSpan);
+  };
+
+  const favorite = () => {
+    setIsFavorite(!isFavorite);
   };
 
   return (
@@ -44,10 +49,22 @@ function Card({ data }: any) {
                 {data.idade} anos
               </p>
             </div>
-            <AiOutlineHeart size={24} />
+            <span className={Style.icon} onClick={favorite}>
+              {isFavorite ? (
+                <span>
+                  <NavLink to="/favoritos" state={{ favorite: data }}>
+                    <AiFillHeart size={24} />
+                  </NavLink>
+                </span>
+              ) : (
+                <AiOutlineHeart size={24} />
+              )}
+            </span>
           </div>
           <div className={`${Style.buttons} ${isSpan ? Style.rotate : ""}`}>
-            <NavLink to="/pet" state={data}>Adotar</NavLink>
+            <NavLink to="/pet" state={data}>
+              Adotar
+            </NavLink>
             <button onClick={span}>
               <MdArrowForwardIos size={24} />
             </button>

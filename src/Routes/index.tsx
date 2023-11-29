@@ -4,6 +4,7 @@ import Home from "../Components/Pages/Home";
 import Pet from "../Components/Pages/Pet";
 import Account from "../Components/Pages/Account";
 import Donate from "../Components/Pages/Donate";
+import Favorite from "../Components/Pages/Favorite";
 
 function RoutesContent() {
   return (
@@ -13,6 +14,7 @@ function RoutesContent() {
       <Route path="/pet" element={<Pet />}/>
       <Route path="/conta" element={<Account />}/>
       <Route path="/doar" element={<Donate />}/>
+      <Route path="/favoritos" element={<Favorite />} />
     </Routes>
   );
 }
