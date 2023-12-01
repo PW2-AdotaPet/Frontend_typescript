@@ -8,6 +8,7 @@ import DividerContainer from "../Layouts/DividerContainer";
 import Button from "../Ui/Button";
 import Profile from "../Ui/Profile";
 import Input from "../Forms/Input";
+import NavBar from "../Layouts/NavBar";
 
 function Account() {
   const teste = {
@@ -52,20 +53,29 @@ function Account() {
     },
   ];
   return (
-    <Container customClass="columnSpace">
-      <DividerContainer customClass="center">
-        <Profile image={teste.image} />
-      </DividerContainer>
-      <DividerContainer customClass="column">
-        {inputs.map((element: any, index: number) => (
-          <Input name={element.name} Icon={element.icon} status={true} value={element.value} key={index} />
-        ))}
-      </DividerContainer>
-      <DividerContainer>
-        <Button name="Editar Conta" customClass="outline" />
-        <Button name="Apagar Conta" customClass="outline" />
-        <Button name="Sair" customClass="danger" />
-      </DividerContainer>
+    <Container>
+      <NavBar />
+      <Container customClass="columnSpace">
+        <DividerContainer customClass="center">
+          <Profile image={teste.image} />
+        </DividerContainer>
+        <DividerContainer customClass="column">
+          {inputs.map((element: any, index: number) => (
+            <Input
+              name={element.name}
+              Icon={element.icon}
+              status={true}
+              value={element.value}
+              key={index}
+            />
+          ))}
+        </DividerContainer>
+        <DividerContainer>
+          <Button name="Editar Conta" customClass="outline" />
+          <Button name="Apagar Conta" customClass="outline" />
+          <Button name="Sair" customClass="danger" />
+        </DividerContainer>
+      </Container>
     </Container>
   );
 }

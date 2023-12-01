@@ -1,0 +1,14 @@
+.link {
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-self: stretch
+}
+.link a {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+    color: var(--blue-200);
+}

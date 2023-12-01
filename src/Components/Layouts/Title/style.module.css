@@ -1,8 +1,18 @@
 .title {
-    color: var(--blue-500);
-    font-size: 2em;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 2em;
-    text-align: center;
+  color: var(--blue-500);
+  font-size: 2em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2em;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.textLogin {
+  color: var(--blue-400);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
 }

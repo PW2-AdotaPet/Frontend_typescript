@@ -5,11 +5,13 @@ import Pet from "../Components/Pages/Pet";
 import Account from "../Components/Pages/Account";
 import Donate from "../Components/Pages/Donate";
 import Favorite from "../Components/Pages/Favorite";
+import Login from "../Components/Pages/Login";
 
 function RoutesContent() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/adotar" replace/>} /> {/*Isso aqui é temporario, apenas para redirecionar para rota adotar*/}
+      <Route path="/login" element={<Login />} />
       <Route path="/adotar" element={<Home />}/>
       <Route path="/pet" element={<Pet />}/>
       <Route path="/conta" element={<Account />}/>

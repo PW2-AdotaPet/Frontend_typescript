@@ -3,6 +3,7 @@ import Main from "../Layouts/Main";
 import InfoMessage from "../Layouts/InfoMessage";
 import SearchBar from "../Layouts/SearchBar";
 import Cards from "../Ui/Cards";
+import NavBar from "../Layouts/NavBar";
 
 function Home() {
   const teste = [
@@ -85,15 +86,18 @@ function Home() {
   ];
 
   return (
-    <Container customClass="column">
-      <SearchBar />
-      {teste ? (
-        <Main customClass="scroll">
-          <Cards data={teste} />
-        </Main>
-      ) : (
-        <InfoMessage message="Pesquise por algum animal" />
-      )}
+    <Container>
+      <NavBar />
+      <Container customClass="column">
+        <SearchBar />
+        {teste ? (
+          <Main customClass="scroll">
+            <Cards data={teste} />
+          </Main>
+        ) : (
+          <InfoMessage message="Pesquise por algum animal" />
+        )}
+      </Container>
     </Container>
   );
 }
