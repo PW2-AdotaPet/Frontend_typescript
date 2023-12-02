@@ -9,16 +9,16 @@ import InputLogin from "../Forms/InputLogin";
 import LinkLogin from "../Ui/LinkLogin";
 import Button from "../Ui/Button";
 
-function Login() {
+function Register() {
   return (
     <Container customClass="center">
       <DividerContainer customClass="columnCenter">
         <BoxLogin>
-          <Title contentTitle="Entrar" />
+          <Title contentTitle="Cadastro" />
           <DividerContainer customClass="columnMin">
             <InputLogin Icon={CiUser} Type="text" Name="E-mail" />
             <InputLogin Icon={CiLock} Type="password" Name="Senha" />
-            <LinkLogin name="Esqueci a senha" link="/register" />
+            <InputLogin Icon={CiLock} Type="password" Name="Confirmar senha" />
             <DividerContainer>
               <Button name="Entrar" customClass="success" />
             </DividerContainer>
@@ -33,12 +33,12 @@ function Login() {
           </DividerContainer>
         </BoxLogin>
         <p style={{ display: "flex" }}>
-          Você não tem uma conta?{" "}
-          <LinkLogin name="Criar conta" link="/register" />
+          Já possui uma conta?
+          <LinkLogin name="Fazer login" link="/login" />
         </p>
       </DividerContainer>
     </Container>
   );
 }
 
-export default Login;
+export default Register;

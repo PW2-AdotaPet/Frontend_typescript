@@ -30,3 +30,8 @@
     background: var(--red);
     color: var(--white-200);
 }
+
+.auth {
+    background: var(--white-300);
+    color: var(--blue-400);
+}

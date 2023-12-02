@@ -6,16 +6,19 @@ import Account from "../Components/Pages/Account";
 import Donate from "../Components/Pages/Donate";
 import Favorite from "../Components/Pages/Favorite";
 import Login from "../Components/Pages/Login";
+import Register from "../Components/Pages/Register";
 
 function RoutesContent() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/adotar" replace/>} /> {/*Isso aqui é temporario, apenas para redirecionar para rota adotar*/}
+      <Route path="/" element={<Navigate to="/adotar" replace />} />{" "}
+      {/*Isso aqui é temporario, apenas para redirecionar para rota adotar*/}
+      <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/adotar" element={<Home />}/>
-      <Route path="/pet" element={<Pet />}/>
-      <Route path="/conta" element={<Account />}/>
-      <Route path="/doar" element={<Donate />}/>
+      <Route path="/adotar" element={<Home />} />
+      <Route path="/pet" element={<Pet />} />
+      <Route path="/conta" element={<Account />} />
+      <Route path="/doar" element={<Donate />} />
       <Route path="/favoritos" element={<Favorite />} />
     </Routes>
   );

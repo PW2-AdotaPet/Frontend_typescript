@@ -23,3 +23,10 @@
     flex-direction: column;
     gap: 1em;
 }
+
+.columnCenter {
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: center;
+    justify-content: center;
+}
