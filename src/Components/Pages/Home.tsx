@@ -8,6 +8,7 @@ import NavBar from "../Layouts/NavBar";
 function Home() {
   const teste = [
     {
+      id: 0,
       image:
         "https://i.natgeofe.com/n/5f35194b-af37-4f45-a14d-60925b280986/NationalGeographic_2731043_2x3.jpg",
       especie: "Cachorro",
@@ -27,6 +28,7 @@ function Home() {
       UF: "PB",
     },
     {
+      id: 1,
       image:
         "https://i.natgeofe.com/n/5f35194b-af37-4f45-a14d-60925b280986/NationalGeographic_2731043_2x3.jpg",
       especie: "Cachorro",
@@ -46,6 +48,7 @@ function Home() {
       UF: "PB",
     },
     {
+      id: 2,
       image:
         "https://i.natgeofe.com/n/5f35194b-af37-4f45-a14d-60925b280986/NationalGeographic_2731043_2x3.jpg",
       especie: "Cachorro",
@@ -65,6 +68,7 @@ function Home() {
       UF: "PB",
     },
     {
+      id: 3,
       image:
         "https://i.natgeofe.com/n/5f35194b-af37-4f45-a14d-60925b280986/NationalGeographic_2731043_2x3.jpg",
       especie: "Cachorro",

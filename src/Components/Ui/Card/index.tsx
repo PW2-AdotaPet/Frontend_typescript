@@ -6,7 +6,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import Style from "./style.module.css";
 import { NavLink } from "react-router-dom";
 
-function Card({ data }: any) {
+function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
   const [isSpan, setIsSpan] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -16,6 +16,10 @@ function Card({ data }: any) {
 
   const favorite = () => {
     setIsFavorite(!isFavorite);
+    if (isFavorite) {
+      handleRemoveFavorite(data)
+    }
+    handleFavorite(data)
   };
 
   return (
@@ -51,11 +55,7 @@ function Card({ data }: any) {
             </div>
             <span className={Style.icon} onClick={favorite}>
               {isFavorite ? (
-                <span>
-                  <NavLink to="/favoritos" state={{ favorite: data }}>
-                    <AiFillHeart size={24} />
-                  </NavLink>
-                </span>
+                <AiFillHeart size={24} />
               ) : (
                 <AiOutlineHeart size={24} />
               )}
