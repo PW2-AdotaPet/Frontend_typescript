@@ -38,7 +38,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
               </p>
               <p>
                 <span>Raça: </span>
-                {data.raca}
+                {data.raça}
               </p>
               <p>
                 <span>Porte: </span>
