@@ -1,14 +1,19 @@
 import Style from "./style.module.css";
 import { useState } from "react";
 
-function InputLogin({ Icon, Type, Name }: any) {
+function InputLogin({ Icon, Type, Name, onInputChange }: any) {
 
-  const [data, setData] = useState<string>();
+  const [inputValue, setInputValue] = useState<string>();
+
+  const handleInputChange = (e: string) => {
+    setInputValue(e)
+    onInputChange(Type, e)
+  }
 
   return (
     <div className={Style.container}>
       <Icon size={24}/>
-      <input type={Type} id={Name} placeholder={Name} value={data} onChange={(e) => setData(e.target.value)} />
+      <input type={Type} id={Name} placeholder={Name} value={inputValue} onChange={(e) => handleInputChange(e.target.value)} />
     </div>
   );
 }

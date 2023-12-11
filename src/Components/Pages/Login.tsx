@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { CiUser, CiLock } from "react-icons/ci";
-import { FaFacebook, FaApple, FaGoogle } from "react-icons/fa";
 import BoxLogin from "../Layouts/BoxLogin";
 import Container from "../Layouts/Container";
 import DividerContainer from "../Layouts/DividerContainer";
@@ -44,14 +43,21 @@ function Login() {
     }
   };
 
+  const [loginData, setLoginData] = useState({text: '', password: ''})
+
+  const handleInputLoginChange = (field: string, value: string) => {
+    setLoginData((prevLoginData) => ({...prevLoginData, [field]: value}))
+    console.log(loginData)
+  }
+
   return (
     <Container customClass="center">
       <DividerContainer customClass="columnCenter">
         <BoxLogin>
           <Title contentTitle="Entrar" />
           <DividerContainer customClass="columnMin">
-            <InputLogin Icon={CiUser} Type="text" Name="E-mail" />
-            <InputLogin Icon={CiLock} Type="password" Name="Senha" />
+            <InputLogin Icon={CiUser} Type="text" Name="E-mail" onInputChange={handleInputLoginChange} />
+            <InputLogin Icon={CiLock} Type="password" Name="Senha" onInputChange={handleInputLoginChange} />
             <LinkLogin name="Esqueci a senha" link="/register" />
             <DividerContainer>
               <Button name="Entrar" customClass="success" handle={handleLogin}/>
