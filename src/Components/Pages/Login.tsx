@@ -8,8 +8,13 @@ import InputLogin from "../Forms/InputLogin";
 import LinkLogin from "../Ui/LinkLogin";
 import Button from "../Ui/Button";
 
+
+// import {useAuth} from
+
 function Login() {
   const [token, setToken] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     const url = 'http://localhost:8000/api/token/';
@@ -21,8 +26,8 @@ function Login() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: 'admin',
-          password: '123qwe',
+          username: username,
+          password: password,
         }),
       });
 
@@ -30,10 +35,7 @@ function Login() {
         const data = await response.json();
         const accessToken = data.access;
 
-        // Armazena o token no localStorage
         localStorage.setItem('token', accessToken);
-
-        // Atualiza o estado com o token
         setToken(accessToken);
       } else {
         console.error('Falha na autenticação');
@@ -43,27 +45,29 @@ function Login() {
     }
   };
 
-  const [loginData, setLoginData] = useState({text: '', password: ''})
-
-  const handleInputLoginChange = (field: string, value: string) => {
-    setLoginData((prevLoginData) => ({...prevLoginData, [field]: value}))
-    console.log(loginData)
-  }
-
   return (
     <Container customClass="center">
       <DividerContainer customClass="columnCenter">
         <BoxLogin>
           <Title contentTitle="Entrar" />
           <DividerContainer customClass="columnMin">
-            <InputLogin Icon={CiUser} Type="text" Name="E-mail" onInputChange={handleInputLoginChange} />
-            <InputLogin Icon={CiLock} Type="password" Name="Senha" onInputChange={handleInputLoginChange} />
+            <InputLogin
+              Icon={CiUser}
+              Type="text"
+              Name="E-mail"
+              onChange={(value: string) => setUsername(value)}
+            />
+            <InputLogin
+              Icon={CiLock}
+              Type="password"
+              Name="Senha"
+              onChange={(value: string) => setPassword(value)}
+            />
             <LinkLogin name="Esqueci a senha" link="/register" />
             <DividerContainer>
-              <Button name="Entrar" customClass="success" handle={handleLogin}/>
+              <Button name="Entrar" customClass="success" handle={handleLogin} />
             </DividerContainer>
           </DividerContainer>
-
         </BoxLogin>
         <p style={{ display: "flex" }}>
           Você não tem uma conta?{" "}
