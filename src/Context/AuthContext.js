@@ -1,15 +1,13 @@
+// AuthContext.js
 import React, { createContext, useContext, useState } from "react";
 
-// Criação do contexto de autenticação
 const AuthContext = createContext();
 
-// Provider do contexto de autenticação
 export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(localStorage.getItem("token") || "");
 
-	// Função para fazer login
 	const login = async (username, password) => {
-		const url = "http://localhost:8000/api/login/";
+		const url = "http://localhost:8000/api/token/";
 
 		try {
 			const response = await fetch(url, {
@@ -22,12 +20,9 @@ export const AuthProvider = ({ children }) => {
 
 			if (response.ok) {
 				const data = await response.json();
-				const accessToken = data.access_token;
+				const accessToken = data.access;
 
-				// Armazena o token no localStorage
 				localStorage.setItem("token", accessToken);
-
-				// Atualiza o token no estado
 				setToken(accessToken);
 			} else {
 				console.error("Falha na autenticação");
@@ -37,12 +32,8 @@ export const AuthProvider = ({ children }) => {
 		}
 	};
 
-	// Função para fazer logout
 	const logout = () => {
-		// Remove o token do localStorage
 		localStorage.removeItem("token");
-
-		// Limpa o token do estado
 		setToken("");
 	};
 
@@ -53,5 +44,12 @@ export const AuthProvider = ({ children }) => {
 	);
 };
 
-// Hook personalizado para acessar o contexto de autenticação
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+	const context = useContext(AuthContext);
+	if (!context) {
+		throw new Error("useAuth deve ser usado dentro de um AuthProvider");
+	}
+	return context;
+};
+
+export default AuthContext;
