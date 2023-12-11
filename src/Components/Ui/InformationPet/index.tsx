@@ -9,49 +9,40 @@ function InformationPet({ data }: any) {
   function goBack() {
     navigate("/adotar")
   }
-  
+
   return (
     <>
       <DividerContainer>
-        <div
-          className={Style.image}
-          style={{ backgroundImage: `url(${data.image})` }}
-        ></div>
-        <div
-          className={Style.image}
-          style={{ backgroundImage: `url(${data.image})` }}
-        ></div>
-        <div
-          className={Style.image}
-          style={{ backgroundImage: `url(${data.image})` }}
-        ></div>
-        <div
-          className={Style.image}
-          style={{ backgroundImage: `url(${data.image})` }}
-        ></div>
+        {data.pictures.map((picture: any) => (
+          <div
+            key={picture.id}
+            className={Style.image}
+            style={{ backgroundImage: `url(${picture.image})` }}
+          ></div>
+        ))}
       </DividerContainer>
       <DividerContainer>
         <div className={Style.boxInfo}>
           <h2>Sobre o Doador</h2>
           <p>
             <span>Nome: </span>
-            {data.dono}
+            {data.donatario.username}
           </p>
           <p>
             <span>Endereço: </span>
-            {data.endereco}, {data.numero}
+            {data.donatario.profile.address.street}
           </p>
           <p>
-            <span>Cidade: </span>
-            {data.cidade}, {data.UF}
+          <span>Cidade: </span>
+          {data.donatario.profile.address.city}, {data.donatario.profile.address.state}
           </p>
           <p>
             <span>E-mail: </span>
-            {data.email}
+            {data.donatario.email}
           </p>
           <p>
             <span>Telefone: </span>
-            {data.telefone}
+            {data.donatario.profile.phone}
           </p>
         </div>
         <div className={Style.boxInfo}>
@@ -62,7 +53,7 @@ function InformationPet({ data }: any) {
           </p>
           <p>
             <span>Raça: </span>
-            {data.raca}
+            {data.raça}
           </p>
           <p>
             <span>Porte: </span>
@@ -73,7 +64,7 @@ function InformationPet({ data }: any) {
             {data.sexo}
           </p>
           <p>
-            <span>Iadade: </span>
+            <span>Idade: </span>
             {data.idade}
           </p>
           <p>

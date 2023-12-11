@@ -27,7 +27,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
       <div className={Style.infoTemplate}>
         <div
           className={Style.image}
-          style={{ backgroundImage: `url(${data.image})` }}
+          style={{ backgroundImage: `url(${data.pictures[0].image})` }}
         ></div>
         <div className={Style.Pet}>
           <div className={Style.infoPet}>
@@ -75,15 +75,15 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
         <h2>Sobre o Doador</h2>
         <p>
           <span>Nome: </span>
-          {data.dono}
+          {data.donatario.username}
         </p>
         <p>
           <span>Endereço: </span>
-          {data.endereco}, {data.numero}
+          {data.donatario.profile.address.street}
         </p>
         <p>
           <span>Cidade: </span>
-          {data.cidade}, {data.UF}
+          {data.donatario.profile.address.city}, {data.donatario.profile.address.state}
         </p>
       </div>
       <div className={Style.infoCard}>
