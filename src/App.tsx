@@ -5,11 +5,11 @@ import { AuthProvider } from "./Context/AuthContext";
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <RoutesContent />
-      </AuthProvider>
-    </Router>
+      <Router>
+        <AuthProvider>
+          <RoutesContent />
+        </AuthProvider>
+      </Router>
   );
 }
 

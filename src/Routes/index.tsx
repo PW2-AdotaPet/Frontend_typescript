@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, RouteProps } from "react-router-dom";
 
 import Home from "../Components/Pages/Home";
 import Pet from "../Components/Pages/Pet";
@@ -8,18 +8,25 @@ import Favorite from "../Components/Pages/Favorite";
 import Login from "../Components/Pages/Login";
 import Register from "../Components/Pages/Register";
 
+
+import { useAuth } from "../Context/AuthContext";
+
 function RoutesContent() {
+
+  const {token} = useAuth();
+
+  const isAuthenticated = !!token;
+
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/adotar" replace />} />{" "}
-      {/*Isso aqui é temporario, apenas para redirecionar para rota adotar*/}
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/adotar" element={<Home />} />
-      <Route path="/pet" element={<Pet />} />
-      <Route path="/conta" element={<Account />} />
-      <Route path="/doar" element={<Donate />} />
-      <Route path="/favoritos" element={<Favorite />} />
+      <Route path="/register" element={isAuthenticated ? <Navigate to="/adotar" />  : <Register />} />
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/adotar" /> : <Login />} />
+      <Route path="/adotar" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
+      <Route path="/pet" element={isAuthenticated ? <Pet /> : <Navigate to="/login" />} />
+      <Route path="/conta" element={isAuthenticated ? <Account /> : <Navigate to="/login" />} />
+      <Route path="/doar" element={isAuthenticated ? <Donate /> : <Navigate to="/login" />} />
+      <Route path="/favoritos" element={isAuthenticated ? <Favorite /> : <Navigate to="/login" />} />
     </Routes>
   );
 }
