@@ -4,8 +4,34 @@ import Cards from "../Ui/Cards";
 import NavBar from "../Layouts/NavBar";
 import InfoMessage from "../Layouts/InfoMessage";
 
+import { useState, useEffect } from "react";
+
+import { useAuth } from "../../Context/AuthContext";
+
+
+interface FavoritePetData {
+  profile: {favorite_pets: []};
+}
+
 function Favorite() {
-  const data = JSON.parse(localStorage.getItem("Favorites") || "[]");
+  const [data, setData] = useState<FavoritePetData | null>(null);
+
+  const { token } = useAuth();
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/users/me', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      }
+    })
+      .then(response => response.json())
+      .then(result => {
+        setData(result)
+        console.log(result)
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   return (
     <Container>
@@ -13,7 +39,7 @@ function Favorite() {
       <Container customClass="column">
         <Main customClass="scroll">
           {data ? (
-            <Cards data={data} />
+            <Cards data={data?.profile.favorite_pets} />
           ) : (
             <InfoMessage message="Nenhum pet ainda foi adicionado à lista!" />
           )}

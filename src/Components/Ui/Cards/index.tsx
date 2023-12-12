@@ -1,12 +1,26 @@
 import Card from "../Card";
 import Style from "./style.module.css";
 
+
+import { useAuth } from "../../../Context/AuthContext";
+
+import { useState } from "react";
+
 function Cards({ data }: any) {
-  const handleFavorite = (data: {}) => {
-    const array = JSON.parse(localStorage.getItem("Favorites") || "[]");
-    const newArray = [...array, data];
-    localStorage.setItem("Favorites", JSON.stringify(newArray));
-  };
+
+  const [isFavorite, setFavorite] = useState();
+
+  const { token } = useAuth();
+
+  const handleFavorite = (data: {id: Number}) => {
+
+    fetch(`http://localhost:8000/api/pets/${data.id}/favorite/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      method: "POST"
+    })}
 
   const handleRemoveFavorite = async (data: { id: number }) => {
     const array = JSON.parse(localStorage.getItem("Favorites") || "[]");

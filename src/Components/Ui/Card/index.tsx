@@ -27,7 +27,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
       <div className={Style.infoTemplate}>
         <div
           className={Style.image}
-          style={{ backgroundImage: `url(${data.pictures[0].image})` }}
+          style={{ backgroundImage: `url(${data.pictures.length > 0 ? data.pictures[0].image: ""})` }}
         ></div>
         <div className={Style.Pet}>
           <div className={Style.infoPet}>

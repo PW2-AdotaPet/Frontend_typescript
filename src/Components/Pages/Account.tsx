@@ -30,7 +30,7 @@ function Account() {
   useEffect(() => {
 
     fetch('http://localhost:8000/api/users/me', {
-      headers: {Authorization: `Bearer ${token}`}
+      headers: {Authorization: `Bearer ${token}`, "Content-Type": "application/json",}
     })
       .then(response => response.json())
       .then(result => {
