@@ -6,13 +6,18 @@ import SearchBar from "../Layouts/SearchBar";
 import Cards from "../Ui/Cards";
 import NavBar from "../Layouts/NavBar";
 
+import { useAuth } from '../../Context/AuthContext';
+
 function Home() {
   const [data, setData] = useState([]);
 
+  const { token } = useAuth();
+
   useEffect(() => {
 
-
-    fetch('http://localhost:8000/api/pets/')
+    fetch('http://localhost:8000/api/pets/', {
+      headers: {Authorization: `Bearer ${token}`}
+    })
       .then(response => response.json())
       .then(result => {
         setData(result)})

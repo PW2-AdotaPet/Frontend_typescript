@@ -30,7 +30,7 @@ function Login() {
             <InputLogin
               Icon={CiUser}
               Type="text"
-              Name="E-mail"
+              Name="Username"
               onChange={(value: string) => setUsername(value)}
             />
             <InputLogin
