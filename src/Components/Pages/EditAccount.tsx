@@ -29,10 +29,14 @@ function EditAccount() {
       },
     });
     const data = await response.json();
+
     const idUsuario = data.id;
     const idProfileUsuario = data.profile.id;
+    let idAdressUsuario = data.profile.address ? data.profile.address : null
 
-    await fetch(`http://localhost:8000/api/users/${idUsuario}`, {
+    console.log(idAdressUsuario)
+
+    await fetch(`http://localhost:8000/api/users/${idUsuario}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -41,12 +45,12 @@ function EditAccount() {
       body: JSON.stringify({
         username,
         email,
-        first_name: firstName,
-        last_name: lastName,
+        'first_name': firstName,
+        'last_name': lastName,
       }),
     });
 
-    await fetch(`http://localhost:8000/api/users/${idProfileUsuario}`, {
+    await fetch(`http://localhost:8000/api/profiles/${idProfileUsuario}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -56,9 +60,48 @@ function EditAccount() {
         phone,
       }),
     });
-  };
 
-  handleEditAccount();
+    if (idAdressUsuario !== null) {
+      await fetch(`http://localhost:8000/api/addresses/${idAdressUsuario}/`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          street,
+          city,
+          state,
+        }),
+      });
+    } else {
+      let newAddress = await fetch(`http://localhost:8000/api/addresses/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          street,
+          city,
+          state
+        }),
+      });
+
+      const data = await newAddress.json()
+
+      await fetch(`http://localhost:8000/api/profiles/${idProfileUsuario}/`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        address: data.id,
+      }),
+    });
+    }
+  };
 
   return (
     <Container>
@@ -120,6 +163,7 @@ function EditAccount() {
               placeholder="Digite seu username"
               onChange={(value: string) => setState(value)}
             />
+            <button onClick={handleEditAccount}>Enviar</button>
             {/* <InputDonate
               type="file"
               label="Foto de perfil"
