@@ -86,12 +86,12 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
         </p>
         <p>
           <span>Endereço: </span>
-          {data.donatario.profile.address.street}
+          {data.donatario.profile.human_readable_address? data.donatario.profile.human_readable_address.street: ""}
         </p>
         <p>
           <span>Cidade: </span>
-          {data.donatario.profile.address.city},{" "}
-          {data.donatario.profile.address.state}
+          {data.donatario.profile.human_readable_address? data.donatario.profile.human_readable_address.city : ""},{" "}
+          {data.donatario.profile.human_readable_address? data.donatario.profile.human_readable_address.state: ""}
         </p>
       </div>
       <div className={Style.infoCard}>

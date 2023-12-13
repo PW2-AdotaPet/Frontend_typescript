@@ -38,8 +38,6 @@ function Donate() {
     body: JSON.stringify({ especie, "raça": raca, porte, sexo, altura, comprimento, idade, peso }),
     })
 
-    console.log(response.statusText)
-
   }
 
   return (

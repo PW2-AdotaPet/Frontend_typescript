@@ -30,11 +30,11 @@ function InformationPet({ data }: any) {
           </p>
           <p>
             <span>Endereço: </span>
-            {data.donatario.profile.address.street}
+            {data.donatario.profile.human_readable_address.street}
           </p>
           <p>
           <span>Cidade: </span>
-          {data.donatario.profile.address.city}, {data.donatario.profile.address.state}
+          {data.donatario.profile.human_readable_address.city}, {data.donatario.profile.human_readable_address.state}
           </p>
           <p>
             <span>E-mail: </span>

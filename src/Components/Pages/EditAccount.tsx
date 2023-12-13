@@ -34,8 +34,6 @@ function EditAccount() {
     const idProfileUsuario = data.profile.id;
     let idAdressUsuario = data.profile.address ? data.profile.address : null
 
-    console.log(idAdressUsuario)
-
     await fetch(`http://localhost:8000/api/users/${idUsuario}/`, {
       method: "PATCH",
       headers: {
