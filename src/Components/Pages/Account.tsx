@@ -10,36 +10,34 @@ import Profile from "../Ui/Profile";
 import Input from "../Forms/Input";
 import NavBar from "../Layouts/NavBar";
 
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from "react";
 
 import { useAuth } from "../../Context/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 
 interface UserData {
   username: string;
   email: string;
-  profile: {phone: string, picture: string};
+  profile: { phone: string; picture: string };
 }
 
 function Account() {
-
   const { logout, token } = useAuth();
   const [user, setUser] = useState<UserData | null>(null);
 
   useEffect(() => {
-
-    fetch('http://localhost:8000/api/users/me', {
-      headers: {Authorization: `Bearer ${token}`, "Content-Type": "application/json",}
+    fetch("http://localhost:8000/api/users/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
     })
-      .then(response => response.json())
-      .then(result => {
-        setUser(result)
+      .then((response) => response.json())
+      .then((result) => {
+        setUser(result);
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
-
-
 
   const inputs = [
     {
@@ -63,6 +61,8 @@ function Account() {
       value: "01/01/2000",
     },
   ];
+
+  const navigate = useNavigate();
   return (
     <Container>
       <NavBar />
@@ -82,7 +82,11 @@ function Account() {
           ))}
         </DividerContainer>
         <DividerContainer>
-          <Button name="Editar Conta" customClass="outline" />
+          <Button
+            name="Editar Conta"
+            customClass="outline"
+            handle={() => navigate("editar")}
+          />
           <Button name="Apagar Conta" customClass="outline" />
           <Button name="Sair" customClass="danger" handle={logout} />
         </DividerContainer>

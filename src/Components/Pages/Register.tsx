@@ -1,5 +1,4 @@
 import { CiUser, CiLock } from "react-icons/ci";
-import { FaFacebook, FaApple, FaGoogle } from "react-icons/fa";
 
 import BoxLogin from "../Layouts/BoxLogin";
 import Container from "../Layouts/Container";
@@ -13,27 +12,25 @@ import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
 
 function Register() {
-
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [password_confirmation, setPasswordConfirmation] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [password_confirmation, setPasswordConfirmation] = useState("");
 
   const { login } = useAuth();
 
-
-  const handleRegister = async() => {
-    const response = await fetch('http://localhost:8000/api/users/', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password, password_confirmation }),
-    })
+  const handleRegister = async () => {
+    const response = await fetch("http://localhost:8000/api/users/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password, password_confirmation }),
+    });
 
     if (response.ok) {
-      login(username, password)
+      login(username, password);
     }
-  }
+  };
 
   return (
     <Container customClass="center">
@@ -41,11 +38,30 @@ function Register() {
         <BoxLogin>
           <Title contentTitle="Cadastro" />
           <DividerContainer customClass="columnMin">
-            <InputLogin Icon={CiUser} Type="text" Name="Username" onChange={(value: string) => setUsername(value)}/>
-            <InputLogin Icon={CiLock} Type="password" Name="Senha" onChange={(value: string) => setPassword(value)} />
-            <InputLogin Icon={CiLock} Type="password" Name="Confirmar senha" onChange={(value: string) => setPasswordConfirmation(value)}/>
+            <InputLogin
+              Icon={CiUser}
+              Type="text"
+              Name="Username"
+              onChange={(value: string) => setUsername(value)}
+            />
+            <InputLogin
+              Icon={CiLock}
+              Type="password"
+              Name="Senha"
+              onChange={(value: string) => setPassword(value)}
+            />
+            <InputLogin
+              Icon={CiLock}
+              Type="password"
+              Name="Confirmar senha"
+              onChange={(value: string) => setPasswordConfirmation(value)}
+            />
             <DividerContainer>
-              <Button name="Entrar" customClass="success" handle={handleRegister} />
+              <Button
+                name="Entrar"
+                customClass="success"
+                handle={handleRegister}
+              />
             </DividerContainer>
           </DividerContainer>
         </BoxLogin>

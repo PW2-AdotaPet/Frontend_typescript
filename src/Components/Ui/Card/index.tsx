@@ -17,9 +17,9 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
   const favorite = () => {
     setIsFavorite(!isFavorite);
     if (isFavorite) {
-      handleRemoveFavorite(data)
+      handleRemoveFavorite(data);
     }
-    handleFavorite(data)
+    handleFavorite(data);
   };
 
   return (
@@ -27,7 +27,11 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
       <div className={Style.infoTemplate}>
         <div
           className={Style.image}
-          style={{ backgroundImage: `url(${data.pictures.length > 0 ? data.pictures[0].image: ""})` }}
+          style={{
+            backgroundImage: `url(${
+              data.pictures.length > 0 ? data.pictures[0].image : ""
+            })`,
+          }}
         ></div>
         <div className={Style.Pet}>
           <div className={Style.infoPet}>
@@ -83,7 +87,8 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
         </p>
         <p>
           <span>Cidade: </span>
-          {data.donatario.profile.address.city}, {data.donatario.profile.address.state}
+          {data.donatario.profile.address.city},{" "}
+          {data.donatario.profile.address.state}
         </p>
       </div>
       <div className={Style.infoCard}>
