@@ -8,9 +8,8 @@ import { useState, useEffect } from "react";
 
 import { useAuth } from "../../Context/AuthContext";
 
-
 interface FavoritePetData {
-  profile: {favorite_pets: []};
+  profile: { favorite_pets: [] };
 }
 
 function Favorite() {
@@ -19,29 +18,31 @@ function Favorite() {
   const { token } = useAuth();
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/users/me', {
+    fetch("http://localhost:8000/api/users/me", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-      }
+      },
     })
-      .then(response => response.json())
-      .then(result => {
-        setData(result)
+      .then((response) => response.json())
+      .then((result) => {
+        setData(result);
       })
-      .catch(error => console.error('Error fetching data:', error));
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+  console.log(data)
 
   return (
     <Container>
       <NavBar />
       <Container customClass="column">
         <Main customClass="scroll">
-          {data ? (
+          {data?.profile.favorite_pets ? data.profile.favorite_pets.length > 0 ? (
             <Cards data={data?.profile.favorite_pets} />
           ) : (
             <InfoMessage message="Nenhum pet ainda foi adicionado à lista!" />
-          )}
+          ) : null}
         </Main>
       </Container>
     </Container>

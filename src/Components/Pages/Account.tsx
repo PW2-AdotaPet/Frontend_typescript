@@ -14,6 +14,7 @@ import React, { useState, useEffect } from "react";
 
 import { useAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Modal from "../Ui/Modal";
 
 interface UserData {
   username: string;
@@ -63,6 +64,9 @@ function Account() {
   ];
 
   const navigate = useNavigate();
+
+  const [openModal, setOpenModal] = useState(false)
+
   return (
     <Container>
       <NavBar />
@@ -87,9 +91,10 @@ function Account() {
             customClass="outline"
             handle={() => navigate("editar")}
           />
-          <Button name="Apagar Conta" customClass="outline" />
+          <Button name="Apagar Conta" customClass="outline" handle={() => setOpenModal(!openModal)} />
           <Button name="Sair" customClass="danger" handle={logout} />
         </DividerContainer>
+        {openModal && <Modal contentText="Tem certeza que deseja apagar sua conta?" isOpen={setOpenModal} />}
       </Container>
     </Container>
   );

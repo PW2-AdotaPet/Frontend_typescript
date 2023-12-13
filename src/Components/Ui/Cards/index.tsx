@@ -3,11 +3,7 @@ import Style from "./style.module.css";
 
 import { useAuth } from "../../../Context/AuthContext";
 
-import { useState } from "react";
-
 function Cards({ data }: any) {
-  const [isFavorite, setFavorite] = useState();
-
   const { token } = useAuth();
 
   const handleFavorite = (data: { id: Number }) => {

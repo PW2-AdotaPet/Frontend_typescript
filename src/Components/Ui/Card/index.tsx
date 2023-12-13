@@ -6,22 +6,26 @@ import { MdArrowForwardIos } from "react-icons/md";
 import Style from "./style.module.css";
 import { NavLink } from "react-router-dom";
 
-
 function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
   const [isSpan, setIsSpan] = useState(false);
-
-  const isFavorite = data.is_favorite;
 
   const span = () => {
     setIsSpan(!isSpan);
   };
 
+  const isFavorite = data.is_favorite;
 
-  const favorite =  () => {
+  const [petFavorite, setPetFavorite] = useState(isFavorite);
+
+  const favorite = () => {
     if (isFavorite) {
+
+      setPetFavorite(!petFavorite);
       handleRemoveFavorite(data);
-      return
+      window.location.reload()
+      return;
     }
+    setPetFavorite(!petFavorite);
     handleFavorite(data);
   };
 
@@ -61,7 +65,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
               </p>
             </div>
             <span className={Style.icon} onClick={favorite}>
-              {isFavorite ? (
+              {petFavorite ? (
                 <AiFillHeart size={24} />
               ) : (
                 <AiOutlineHeart size={24} />
@@ -86,12 +90,19 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
         </p>
         <p>
           <span>Endereço: </span>
-          {data.donatario.profile.human_readable_address? data.donatario.profile.human_readable_address.street: ""}
+          {data.donatario.profile.human_readable_address
+            ? data.donatario.profile.human_readable_address.street
+            : ""}
         </p>
         <p>
           <span>Cidade: </span>
-          {data.donatario.profile.human_readable_address? data.donatario.profile.human_readable_address.city : ""},{" "}
-          {data.donatario.profile.human_readable_address? data.donatario.profile.human_readable_address.state: ""}
+          {data.donatario.profile.human_readable_address
+            ? data.donatario.profile.human_readable_address.city
+            : ""}
+          ,{" "}
+          {data.donatario.profile.human_readable_address
+            ? data.donatario.profile.human_readable_address.state
+            : ""}
         </p>
       </div>
       <div className={Style.infoCard}>
