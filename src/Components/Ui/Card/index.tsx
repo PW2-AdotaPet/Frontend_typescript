@@ -6,18 +6,21 @@ import { MdArrowForwardIos } from "react-icons/md";
 import Style from "./style.module.css";
 import { NavLink } from "react-router-dom";
 
+
 function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
   const [isSpan, setIsSpan] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+
+  const isFavorite = data.is_favorite;
 
   const span = () => {
     setIsSpan(!isSpan);
   };
 
-  const favorite = () => {
-    setIsFavorite(!isFavorite);
+
+  const favorite =  () => {
     if (isFavorite) {
       handleRemoveFavorite(data);
+      return
     }
     handleFavorite(data);
   };
