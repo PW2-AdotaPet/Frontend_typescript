@@ -2,7 +2,7 @@ import Style from "./style.module.css"
 
 import { useState } from "react";
 
-function InputDonate({type, label, placeholder, onChange}: any) {
+function InputDonate({type, label, placeholder, Value, onChange}: any) {
 
     const [data, setData] = useState<string>('');
 
