@@ -28,7 +28,6 @@ function Favorite() {
       .then(response => response.json())
       .then(result => {
         setData(result)
-        console.log(result)
       })
       .catch(error => console.error('Error fetching data:', error));
   }, []);
