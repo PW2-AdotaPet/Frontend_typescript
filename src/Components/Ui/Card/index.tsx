@@ -82,17 +82,35 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
               </p>
             </div>
             <span className={Style.icon} onClick={favorite}>
-              {petFavorite ? (
-                <AiFillHeart size={24} />
+              {userData.id !== data.adotante ? (
+                userData.id !== data.donatario.id ? (
+                  petFavorite ? (
+                    <AiFillHeart size={24} />
+                  ) : (
+                    <AiOutlineHeart size={24} />
+                  )
+                ) : (
+                  ""
+                )
               ) : (
-                <AiOutlineHeart size={24} />
+                ""
               )}
             </span>
           </div>
           <div className={`${Style.buttons} ${isSpan ? Style.rotate : ""}`}>
-            {userData.id !== data.donatario.id ? <NavLink to="/pet">
-              Adotar
-            </NavLink> : <p>olá</p>}
+            {userData.id !== data.adotante ? (
+              userData.id !== data.donatario.id ? (
+                <NavLink to="/pet" state={data}>
+                  Adotar
+                </NavLink>
+              ) : (
+                <NavLink to="/pet" state={data}>
+                  Editar
+                </NavLink>
+              )
+            ) : (
+              <p className={Style.a}>Mais informações abaixo</p>
+            )}
             <button onClick={span}>
               <MdArrowForwardIos size={24} />
             </button>

@@ -7,6 +7,8 @@ import NavBar from "../Layouts/NavBar";
 function Pet() {
   const location = useLocation();
   const data = location.state;
+
+  console.log(data)
   return (
     <Container>
       <NavBar />

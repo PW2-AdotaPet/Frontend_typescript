@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import Style from "./style.module.css";
 import DividerContainer from "../../Layouts/DividerContainer";
 import Button from "../Button";
 
 function InformationPet({ data }: any) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function goBack() {
-    navigate("/adotar")
+    navigate("/adotar");
   }
 
   return (
@@ -30,11 +30,19 @@ function InformationPet({ data }: any) {
           </p>
           <p>
             <span>Endereço: </span>
-            {data.donatario.profile.human_readable_address.street}
+            {data.donatario.profile.human_readable_address
+              ? data.donatario.profile.human_readable_address.street
+              : ""}
           </p>
           <p>
-          <span>Cidade: </span>
-          {data.donatario.profile.human_readable_address.city}, {data.donatario.profile.human_readable_address.state}
+            <span>Cidade: </span>
+            {data.donatario.profile.human_readable_address
+              ? data.donatario.profile.human_readable_address.city
+              : ""}
+            ,{" "}
+            {data.donatario.profile.human_readable_address
+              ? data.donatario.profile.human_readable_address.state
+              : ""}
           </p>
           <p>
             <span>E-mail: </span>
