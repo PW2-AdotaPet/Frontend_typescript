@@ -7,6 +7,10 @@ import { MdArrowForwardIos } from "react-icons/md";
 import Style from "./style.module.css";
 import { NavLink } from "react-router-dom";
 
+interface IuserData {
+  id: number;
+}
+
 function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
   const { token } = useAuth();
   const [isSpan, setIsSpan] = useState(false);
@@ -30,7 +34,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
     handleFavorite(data);
   };
 
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState<IuserData | null>(null)
 
   useEffect(() => {
     const getIdUser = async () => {
@@ -90,7 +94,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
             </span>
           </div>
           <div className={`${Style.buttons} ${isSpan ? Style.rotate : ""}`}>
-            {userData.id !== data.donatario.id ? <NavLink to="/pet">
+            {userData?.id !== data.donatario.id ? <NavLink to="/pet">
               Adotar
             </NavLink> : <p>olá</p>}
             <button onClick={span}>
