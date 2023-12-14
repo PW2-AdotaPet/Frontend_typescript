@@ -12,6 +12,7 @@ import DonatedPet from "../Components/Pages/DonatedPet";
 import AdoptedPet from "../Components/Pages/AdoptedPet";
 
 import { useAuth } from "../Context/AuthContext";
+import EditDonate from '../Components/Pages/EditDonate';
 
 function RoutesContent() {
   const { token } = useAuth();
@@ -57,6 +58,10 @@ function RoutesContent() {
         path="/doados"
         element={isAuthenticated ? <DonatedPet /> : <Navigate to="/login" />}
       />
+        <Route
+          path="/doados/editar"
+          element={isAuthenticated ? <EditDonate /> : <Navigate to="/login" />}
+        />
       <Route
         path="/adotados"
         element={isAuthenticated ? <AdoptedPet /> : <Navigate to="/login" />}

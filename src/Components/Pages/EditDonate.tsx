@@ -44,7 +44,7 @@ function Donate() {
     <Container>
       <NavBar />
       <Container customClass="columnSpace">
-        <Title contentTitle="Doação de pet" />
+        <Title contentTitle="Editar pet" />
         <FormContainer>
           <Select
             options={racas}
@@ -86,7 +86,7 @@ function Donate() {
         </FormContainer>
         <DividerContainer>
           <Button name="Cancelar" customClass="outline" />
-          <Button name="Doar" customClass="success" handle={ handleDonate } />
+          <Button name="Salvar" customClass="success" handle={ handleDonate } />
         </DividerContainer>
       </Container>
     </Container>

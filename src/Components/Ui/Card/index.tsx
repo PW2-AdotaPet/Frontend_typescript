@@ -104,7 +104,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
                   Adotar
                 </NavLink>
               ) : (
-                <NavLink to="/pet" state={data}>
+                <NavLink to="/doados/editar" state={data}>
                   Editar
                 </NavLink>
               )
