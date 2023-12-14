@@ -30,7 +30,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
     handleFavorite(data);
   };
 
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState<{ id?: number }>({});
 
   useEffect(() => {
     const getIdUser = async () => {
@@ -39,12 +39,12 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      })
-      const userData = await response.json()
-      setUserData(userData)
-    }
-    getIdUser()
-  }, [])
+      });
+      const data = await response.json();
+      setUserData(data);
+    };
+    getIdUser();
+  }, []);
 
   return (
     <div className={`${Style.container} ${isSpan ? Style.span : ""}`}>
@@ -90,9 +90,11 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
             </span>
           </div>
           <div className={`${Style.buttons} ${isSpan ? Style.rotate : ""}`}>
-            {userData.id !== data.donatario.id ? <NavLink to="/pet">
-              Adotar
-            </NavLink> : <p>olá</p>}
+            {userData.id !== data.donatario.id ? (
+              <NavLink to="/pet">Adotar</NavLink>
+            ) : (
+              <NavLink to="/pet">Editar</NavLink>
+            )}
             <button onClick={span}>
               <MdArrowForwardIos size={24} />
             </button>
