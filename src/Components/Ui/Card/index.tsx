@@ -7,10 +7,6 @@ import { MdArrowForwardIos } from "react-icons/md";
 import Style from "./style.module.css";
 import { NavLink } from "react-router-dom";
 
-interface IuserData {
-  id: number;
-}
-
 function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
   const { token } = useAuth();
   const [isSpan, setIsSpan] = useState(false);
