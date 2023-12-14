@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../../Context/AuthContext";
 
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdArrowForwardIos } from "react-icons/md";
@@ -7,6 +8,7 @@ import Style from "./style.module.css";
 import { NavLink } from "react-router-dom";
 
 function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
+  const { token } = useAuth();
   const [isSpan, setIsSpan] = useState(false);
 
   const span = () => {
@@ -19,15 +21,30 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
 
   const favorite = () => {
     if (isFavorite) {
-
       setPetFavorite(!petFavorite);
       handleRemoveFavorite(data);
-      window.location.reload()
+      window.location.reload();
       return;
     }
     setPetFavorite(!petFavorite);
     handleFavorite(data);
   };
+
+  const [userData, setUserData] = useState(null)
+
+  useEffect(() => {
+    const getIdUser = async () => {
+      const response = await fetch("http://localhost:8000/api/users/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      const userData = await response.json()
+      setUserData(userData)
+    }
+    getIdUser()
+  }, [])
 
   return (
     <div className={`${Style.container} ${isSpan ? Style.span : ""}`}>
@@ -73,9 +90,9 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
             </span>
           </div>
           <div className={`${Style.buttons} ${isSpan ? Style.rotate : ""}`}>
-            <NavLink to="/pet" state={data}>
+            {userData.id !== data.donatario.id ? <NavLink to="/pet">
               Adotar
-            </NavLink>
+            </NavLink> : <p>olá</p>}
             <button onClick={span}>
               <MdArrowForwardIos size={24} />
             </button>
