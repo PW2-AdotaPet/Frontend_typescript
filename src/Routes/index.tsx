@@ -8,6 +8,8 @@ import Favorite from "../Components/Pages/Favorite";
 import Login from "../Components/Pages/Login";
 import Register from "../Components/Pages/Register";
 import EditAccount from "../Components/Pages/EditAccount";
+import DonatedPet from "../Components/Pages/DonatedPet";
+import AdoptedPet from "../Components/Pages/AdoptedPet";
 
 import { useAuth } from "../Context/AuthContext";
 
@@ -53,7 +55,11 @@ function RoutesContent() {
       />
       <Route
         path="/doados"
-        element={isAuthenticated ? <Favorite /> : <Navigate to="/login" />}
+        element={isAuthenticated ? <DonatedPet /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/adotados"
+        element={isAuthenticated ? <AdoptedPet /> : <Navigate to="/login" />}
       />
     </Routes>
   );

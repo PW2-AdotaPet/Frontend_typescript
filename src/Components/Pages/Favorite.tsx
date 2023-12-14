@@ -31,8 +31,6 @@ function Favorite() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  console.log(data)
-
   return (
     <Container>
       <NavBar />

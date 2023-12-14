@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { BiHeart, BiSearch, BiUser } from "react-icons/bi";
 import { LuDog } from "react-icons/lu";
-import { PiPawPrint } from "react-icons/pi";
+import { PiPawPrint, PiHandHeart  } from "react-icons/pi";
 
 import Style from "./style.module.css";
 import NavItem from "./NavItem";
@@ -24,9 +24,14 @@ function NavBar() {
       namePage: "Favoritos",
     },
     {
-      Icon: LuDog,
+      Icon: PiHandHeart,
       link: "/doados",
       namePage: "Pets doados"
+    },
+    {
+      Icon: LuDog,
+      link: "/adotados",
+      namePage: "Pets adotados"
     }
   ];
 

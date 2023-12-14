@@ -8,14 +8,14 @@ import NavBar from "../Layouts/NavBar";
 
 import { useAuth } from "../../Context/AuthContext";
 
-function DonatedPet() {
+function AdoptedPet() {
   const [data, setData] = useState([]);
 
   const { token } = useAuth();
 
   useEffect(() => {
 
-    fetch('http://localhost:8000/api/pets/donated', {
+    fetch('http://localhost:8000/api/pets/adopted', {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -37,11 +37,11 @@ function DonatedPet() {
             <Cards data={data} />
           </Main>
         ) : (
-          <InfoMessage message="Doe algum animal" />
+          <InfoMessage message="Adote algum animal" />
         )}
       </Container>
     </Container>
   );
 }
 
-export default DonatedPet;
+export default AdoptedPet;
