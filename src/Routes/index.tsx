@@ -51,6 +51,10 @@ function RoutesContent() {
         path="/favoritos"
         element={isAuthenticated ? <Favorite /> : <Navigate to="/login" />}
       />
+      <Route
+        path="/doados"
+        element={isAuthenticated ? <Favorite /> : <Navigate to="/login" />}
+      />
     </Routes>
   );
 }

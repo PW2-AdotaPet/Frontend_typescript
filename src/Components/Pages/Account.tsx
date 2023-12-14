@@ -65,7 +65,27 @@ function Account() {
 
   const navigate = useNavigate();
 
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleDeleteAccount = async () => {
+    const response = await fetch("http://localhost:8000/api/users/me/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+
+    await fetch(`http://localhost:8000/api/users/${data.id}/`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    logout()
+  };
 
   return (
     <Container>
@@ -91,10 +111,20 @@ function Account() {
             customClass="outline"
             handle={() => navigate("editar")}
           />
-          <Button name="Apagar Conta" customClass="outline" handle={() => setOpenModal(!openModal)} />
+          <Button
+            name="Apagar Conta"
+            customClass="outline"
+            handle={() => setOpenModal(!openModal)}
+          />
           <Button name="Sair" customClass="danger" handle={logout} />
         </DividerContainer>
-        {openModal && <Modal contentText="Tem certeza que deseja apagar sua conta?" isOpen={setOpenModal} />}
+        {openModal && (
+          <Modal
+            contentText="Tem certeza que deseja apagar sua conta?"
+            isOpen={setOpenModal}
+            handle={handleDeleteAccount}
+          />
+        )}
       </Container>
     </Container>
   );
