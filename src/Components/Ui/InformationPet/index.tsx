@@ -2,12 +2,27 @@ import { useNavigate } from "react-router-dom";
 import Style from "./style.module.css";
 import DividerContainer from "../../Layouts/DividerContainer";
 import Button from "../Button";
+import { useAuth } from "../../../Context/AuthContext";
 
 function InformationPet({ data }: any) {
+  const { token } = useAuth();
   const navigate = useNavigate();
 
   function goBack() {
     navigate("/adotar");
+  }
+
+  const handleAdopte = async () => {
+
+  await fetch(`http://localhost:8000/api/pets/${data.id}/adopt/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    })
+
+    navigate("/adotados")
   }
 
   return (
@@ -93,7 +108,7 @@ function InformationPet({ data }: any) {
       </DividerContainer>
       <DividerContainer>
         <Button name="Cancelar" customClass="outline" handle={goBack} />
-        <Button name="Adotar" customClass="success" />
+        <Button name="Adotar" customClass="success" handle={handleAdopte} />
       </DividerContainer>
     </>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Animals from "../../Assets/Scripts/Animals.json";
 
 import FormContainer from "../Forms/FormContainer";
@@ -16,19 +16,6 @@ function Donate() {
   const location = useLocation();
   const data = location.state;
 
-  const sizes: { [key: string]: string } = {
-    P: "Pequeno",
-    M: "Médio",
-    G: "Grande",
-  };
-  const sexos: { [key: string]: string } = { M: "Macho", F: "Fêmea" };
-
-  data.porte = sizes[data.porte];
-  data.sexo = sexos[data.sexo];
-
-  // console.log(data.porte, sizes[data.porte]);
-  console.log(data)
-
   const [especie, setEspecie] = useState("");
   const [raca, setRaca] = useState("");
   const [porte, setPorte] = useState("");
@@ -38,6 +25,8 @@ function Donate() {
   const [foto, setFoto] = useState("");
   const [idade, setIdade] = useState("");
   const peso = 3.2;
+
+  const navigate = useNavigate()
 
   const { token } = useAuth();
 
@@ -49,23 +38,24 @@ function Donate() {
   ];
 
   const handleDonate = async () => {
-    await fetch("http://localhost:8000/api/pets/", {
-      method: "POST",
+    await fetch(`http://localhost:8000/api/pets/${data.id}/`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        especie,
-        raça: raca,
-        porte,
-        sexo,
-        altura,
-        comprimento,
-        idade,
-        peso,
+        "especie": (especie === "" ? data.especie : especie),
+        "raça": (raca === "" ? data.raça : raca),
+        "porte":(porte === "" ? data.porte : porte),
+        "sexo":(sexo === "" ? data.sexo : sexo),
+        "altura":(altura === "" ? data.altura : altura),
+        "comprimento":(comprimento === "" ? data.comprimento : comprimento),
+        "idade":(idade === "" ? data.idade : idade),
+        "peso":(peso.toString() === "" ? data.peso.toString() : peso.toString()),
       }),
     });
+    navigate("/doados")
   };
 
   return (
@@ -125,7 +115,7 @@ function Donate() {
           />
         </FormContainer>
         <DividerContainer>
-          <Button name="Cancelar" customClass="outline" />
+          <Button name="Cancelar" customClass="outline" handle={() => navigate("/doados")} />
           <Button name="Salvar" customClass="success" handle={handleDonate} />
         </DividerContainer>
       </Container>

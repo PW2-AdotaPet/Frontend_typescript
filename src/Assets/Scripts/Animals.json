@@ -101,21 +101,21 @@
 	],
 	"size": [
 		{
-			"value": "Pequeno"
+			"value": "P"
 		},
 		{
-			"value": "Médio"
+			"value": "M"
 		},
 		{
-			"value": "Grande"
+			"value": "G"
 		}
 	],
 	"sexo": [
 		{
-			"value": "Macho"
+			"value": "M"
 		},
 		{
-			"value": "Fêmea"
+			"value": "F"
 		}
 	]
 }

@@ -10,6 +10,7 @@ import Button from "../Ui/Button";
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
 import Animals from "../../Assets/Scripts/Animals.json";
+import { useNavigate } from "react-router-dom";
 
 function Donate() {
   const [especie, setEspecie] = useState("");
@@ -26,15 +27,10 @@ function Donate() {
 
   const racas = [{ value: "Pitbull" }, { value: "Pug" }, { value: "Pinscher" }];
 
-  const sizes: { [key: string]: string } = {
-    Pequeno: "P",
-    Médio: "M",
-    Grande: "G",
-  };
-  const sexos: { [key: string]: string } = { Macho: "M", Fêmea: "F" };
+  const navigate = useNavigate()
 
   const handleDonate = async () => {
-    const response = await fetch("http://localhost:8000/api/pets/", {
+    await fetch("http://localhost:8000/api/pets/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,15 +39,15 @@ function Donate() {
       body: JSON.stringify({
         especie,
         raça: raca,
-        porte: sizes[porte as keyof typeof sizes],
-        sexo: sexos[sexo as keyof typeof sexos],
+        porte,
+        sexo,
         altura,
         comprimento,
         idade,
         peso,
       }),
     });
-    console.log(await response.json());
+    navigate("/doados")
   };
 
   return (
@@ -109,7 +105,7 @@ function Donate() {
           />
         </FormContainer>
         <DividerContainer>
-          <Button name="Cancelar" customClass="outline" />
+          <Button name="Cancelar" customClass="outline" handle={() => navigate("/adotar")} />
           <Button name="Doar" customClass="success" handle={handleDonate} />
         </DividerContainer>
       </Container>
