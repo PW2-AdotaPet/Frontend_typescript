@@ -9,36 +9,50 @@ import Button from "../Ui/Button";
 
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
+import Animals from "../../Assets/Scripts/Animals.json";
 
 function Donate() {
-
-  const [especie, setEspecie] = useState('');
-  const [raca, setRaca] = useState('');
-  const [porte, setPorte] = useState('');
-  const [sexo, setSexo] = useState('');
-  const [altura, setAltura] = useState('');
-  const [comprimento, setComprimento] = useState('');
-  const [foto, setFoto] = useState('');
-  const [idade, setIdade] = useState('');
-  const peso = 3.2
+  const [especie, setEspecie] = useState("");
+  const [raca, setRaca] = useState("");
+  const [porte, setPorte] = useState({});
+  const [sexo, setSexo] = useState("");
+  const [altura, setAltura] = useState("");
+  const [comprimento, setComprimento] = useState("");
+  const [foto, setFoto] = useState("");
+  const [idade, setIdade] = useState("");
+  const peso = 3.2;
 
   const { token } = useAuth();
 
   const racas = [{ value: "Pitbull" }, { value: "Pug" }, { value: "Pinscher" }];
-  const portes = [{value: "P"}, {value: "M"}, {value: "G"}]
-  const sexos = [{value: "M"}, {value: "F"}]
+
+  const sizes: { [key: string]: string } = {
+    Pequeno: "P",
+    Médio: "M",
+    Grande: "G",
+  };
+  const sexos: { [key: string]: string } = { Macho: "M", Fêmea: "F" };
 
   const handleDonate = async () => {
-    const response = await fetch('http://localhost:8000/api/pets/', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ especie, "raça": raca, porte, sexo, altura, comprimento, idade, peso }),
-    })
-
-  }
+    const response = await fetch("http://localhost:8000/api/pets/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        especie,
+        raça: raca,
+        porte: sizes[porte as keyof typeof sizes],
+        sexo: sexos[sexo as keyof typeof sexos],
+        altura,
+        comprimento,
+        idade,
+        peso,
+      }),
+    });
+    console.log(await response.json());
+  };
 
   return (
     <Container>
@@ -47,19 +61,29 @@ function Donate() {
         <Title contentTitle="Doação de pet" />
         <FormContainer>
           <Select
-            options={racas}
+            options={Animals.species}
             title="Espécie"
             placeholder="Selecione a espécie"
             onChange={(value: string) => setEspecie(value)}
           />
-          <Select options={racas} title="Raça" placeholder="Selecione a raça" onChange={(value: string) => setRaca(value)}/>
           <Select
-            options={portes}
+            options={racas}
+            title="Raça"
+            placeholder="Selecione a raça"
+            onChange={(value: string) => setRaca(value)}
+          />
+          <Select
+            options={Animals.size}
             title="Porte"
             placeholder="Selecione o porte"
             onChange={(value: string) => setPorte(value)}
           />
-          <Select options={sexos} title="Sexo" placeholder="Selecione o sexo"  onChange={(value: string) => setSexo(value)}/>
+          <Select
+            options={Animals.sexo}
+            title="Sexo"
+            placeholder="Selecione o sexo"
+            onChange={(value: string) => setSexo(value)}
+          />
           <InputDonate
             label="Altura"
             placeholder="Digite a altura em centímetros (cm)"
@@ -86,7 +110,7 @@ function Donate() {
         </FormContainer>
         <DividerContainer>
           <Button name="Cancelar" customClass="outline" />
-          <Button name="Doar" customClass="success" handle={ handleDonate } />
+          <Button name="Doar" customClass="success" handle={handleDonate} />
         </DividerContainer>
       </Container>
     </Container>

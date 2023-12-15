@@ -17,7 +17,7 @@ function InputDonate({type, label, placeholder, Value, onChange}: any) {
             {type === "file" ? (
                 <input type={type} accept="image/*" placeholder={placeholder} onChange={handleInputChange}/>
             ) : (
-                <input type={type} placeholder={placeholder} onChange={handleInputChange}/>
+                <input type={type} defaultValue={Value} placeholder={placeholder} onChange={handleInputChange}/>
             )}
         </div>
     )

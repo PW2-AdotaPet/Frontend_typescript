@@ -2,7 +2,7 @@ import Style from "./style.module.css";
 
 import { useState } from "react";
 
-function Select({ options, title, placeholder, onChange }: any) {
+function Select({ options, title, placeholder, onChange, Value }: any) {
 
   const [data, setData] = useState<string>('');
 
@@ -16,7 +16,7 @@ function Select({ options, title, placeholder, onChange }: any) {
       <label htmlFor={title}>{title}</label>
       <select id={title} className={Style.select} onChange={(e) => {handleInputChange(e.target.value)}}>
         <option selected={true} disabled={true}>
-          {placeholder}
+          {Value ? Value : placeholder}
         </option>
         {options.map((element: any, index: number) => (
           <option value={element.value} key={index}>
