@@ -80,6 +80,10 @@
     gap: 0.5em;
 }
 
+.buttons span{
+    width: 100%;
+}
+
 .buttons a {
     display: flex;
     align-items: center;

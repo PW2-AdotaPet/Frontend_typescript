@@ -5,6 +5,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdArrowForwardIos } from "react-icons/md";
 
 import Style from "./style.module.css";
+import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 
 function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
@@ -98,19 +99,31 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
             </span>
           </div>
           <div className={`${Style.buttons} ${isSpan ? Style.rotate : ""}`}>
-            {userData.id !== data.adotante ? (
-              userData.id !== data.donatario.id ? (
-                <NavLink to="/pet" state={data}>
-                  Adotar
-                </NavLink>
+              {userData.id !== data.adotante ? (
+                userData.id !== data.donatario.id ? (
+                  <motion.span
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <NavLink to="/pet" state={data}>
+                      Adotar
+                    </NavLink>
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <NavLink to="/doados/editar" state={data}>
+                      Editar
+                    </NavLink>
+                  </motion.span>
+                )
               ) : (
-                <NavLink to="/doados/editar" state={data}>
-                  Editar
-                </NavLink>
-              )
-            ) : (
-              <p className={Style.a}>Mais informações abaixo</p>
-            )}
+                <p className={Style.a}>Mais informações abaixo</p>
+              )}
             <button onClick={span}>
               <MdArrowForwardIos size={24} />
             </button>
