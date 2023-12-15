@@ -109,7 +109,7 @@ function Account() {
           <Button
             name="Editar Conta"
             customClass="outline"
-            handle={() => navigate("editar")}
+            handle={() => navigate("editar", {state: {user}})}
           />
           <Button
             name="Apagar Conta"

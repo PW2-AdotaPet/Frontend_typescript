@@ -8,7 +8,7 @@ import { useAuth } from "../../Context/AuthContext";
 import { useState } from "react";
 import DividerContainer from "../Layouts/DividerContainer";
 import Button from "../Ui/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function EditAccount() {
   const [username, setUsername] = useState("");
@@ -21,20 +21,9 @@ function EditAccount() {
   const [phone, setPhone] = useState("");
 
   const { token } = useAuth();
-
   const navigate = useNavigate();
-
-  const DataUser = async () => {
-    const response = await fetch("http://localhost:8000/api/users/me", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    return data;
-  };
+  const location = useLocation()
+  const userData = location.state.user
 
   const handleEditAccount = async () => {
     const response = await fetch("http://localhost:8000/api/users/me", {
@@ -57,10 +46,10 @@ function EditAccount() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        username,
-        email,
-        first_name: firstName,
-        last_name: lastName,
+        "username": (username === "" ? userData.username : username),
+        "email": (email === "" ? userData.email : email),
+        "first_name":  (firstName === "" ? userData.first_name : firstName),
+        "last_name":  (lastName === "" ? userData.last_name : lastName),
       }),
     });
 
@@ -71,7 +60,7 @@ function EditAccount() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        phone,
+        "phone": (phone === "" ? userData.profile.phone : phone),
       }),
     });
 
@@ -83,9 +72,9 @@ function EditAccount() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          street,
-          city,
-          state,
+          "street": (street === "" ? userData.profile.human_readable_address.street : street),
+          "city": (city === "" ? userData.profile.human_readable_address.city : city),
+          "state": (state === "" ? userData.profile.human_readable_address.state : state),
         }),
       });
     } else {
@@ -129,30 +118,35 @@ function EditAccount() {
             label="Username"
             placeholder="Digite seu username"
             onChange={(value: string) => setUsername(value)}
+            Value={userData.username}
           />
           <InputDonate
             type="text"
             label="Nome"
             placeholder="Digite seu primeiro nome"
             onChange={(value: string) => setfirstName(value)}
+            Value={userData.first_name}
           />
           <InputDonate
             type="text"
             label="Sobrenome"
             placeholder="Digite seu sobrenome"
             onChange={(value: string) => setLastName(value)}
+            Value={userData.last_name}
           />
           <InputDonate
             type="email"
             label="E-mail"
             placeholder="Digite o seu endereço de email"
             onChange={(value: string) => setEmail(value)}
+            Value={userData.email}
           />
           <InputDonate
             type="tel"
             label="Telefone"
             placeholder="Digite o número do seu telefone"
             onChange={(value: string) => setPhone(value)}
+            Value={userData.profile.phone}
           />
           {/* <InputDonate
               type="date"
@@ -164,18 +158,21 @@ function EditAccount() {
             label="Rua"
             placeholder="Digite o nome da sua rua"
             onChange={(value: string) => setStreet(value)}
+            Value={userData.profile.human_readable_address.street}
           />
           <InputDonate
             type="text"
             label="Cidade"
             placeholder="Digite o nome da sua cidade"
             onChange={(value: string) => setCity(value)}
+            Value={userData.profile.human_readable_address.city}
           />
           <InputDonate
             type="text"
             label="UF/Estado"
             placeholder="Digite o nome de seu estado"
             onChange={(value: string) => setState(value)}
+            Value={userData.profile.human_readable_address.state}
           />
           {/* <InputDonate
               type="file"
