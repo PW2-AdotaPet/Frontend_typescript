@@ -111,7 +111,10 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
                     </NavLink>
                   </motion.span>
                 ) : (
-                  <motion.span
+                  data.adotante > 0 ? (
+                    <p className={Style.a}>O seu pet já foi adotado</p>
+                  ) : (
+                    <motion.span
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     whileHover={{ scale: 1.05 }}
@@ -120,6 +123,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
                       Editar
                     </NavLink>
                   </motion.span>
+                  )
                 )
               ) : (
                 <p className={Style.a}>Mais informações abaixo</p>
@@ -157,10 +161,6 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
         <h2>Sobre o Pet</h2>
         <p>
           <span>Medidas: </span>A: {data.altura}cm | C: {data.comprimento}cm
-        </p>
-        <p>
-          <span>Peso: </span>
-          {data.peso}Kg
         </p>
       </div>
     </div>

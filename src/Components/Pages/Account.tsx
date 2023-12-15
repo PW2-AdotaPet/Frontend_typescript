@@ -56,11 +56,6 @@ function Account() {
       icon: FiSmartphone,
       value: user?.profile.phone,
     },
-    {
-      name: "Data de Nascimento",
-      icon: FaRegCalendar,
-      value: "01/01/2000",
-    },
   ];
 
   const navigate = useNavigate();

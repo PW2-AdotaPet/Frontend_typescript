@@ -148,11 +148,6 @@ function EditAccount() {
             onChange={(value: string) => setPhone(value)}
             Value={userData.profile.phone}
           />
-          {/* <InputDonate
-              type="date"
-              label="Data de nascimento"
-              placeholder="Digite seu username"
-            /> Ainda falta implementar data de nascimento no model do banco */}
           <InputDonate
             type="text"
             label="Rua"

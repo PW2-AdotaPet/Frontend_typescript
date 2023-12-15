@@ -1,121 +1,121 @@
 {
-	"species": [
-		{
-			"value": "Cachorro"
-		},
-		{
-			"value": "Gato"
-		},
-		{
-			"value": "Passaro"
-		}
-	],
-	"animals": [
-		{
-			"species": "Cachorro",
-			"breeds": [
-				{
-					"value": "Labrador"
-				},
-				{
-					"value": "Poodle"
-				},
-				{
-					"value": "Bulldog"
-				},
-				{
-					"value": "Dachshund"
-				},
-				{
-					"value": "Golden Retriever"
-				},
-				{
-					"value": "Chihuahua"
-				},
-				{
-					"value": "Boxer"
-				},
-				{
-					"value": "Shih Tzu"
-				}
-			]
-		},
-		{
-			"species": "Gato",
-			"breeds": [
-				{
-					"value": "Siamês"
-				},
-				{
-					"value": "Persa"
-				},
-				{
-					"value": "Bengal"
-				},
-				{
-					"value": "Maine Coon"
-				},
-				{
-					"value": "Ragdoll"
-				},
-				{
-					"value": "British Shorthair"
-				},
-				{
-					"value": "Scottish Fold"
-				},
-				{
-					"value": "Siamese"
-				}
-			]
-		},
-		{
-			"species": "Pássaro",
-			"breeds": [
-				{
-					"value": "Canário"
-				},
-				{
-					"value": "Periquito"
-				},
-				{
-					"value": "Calopsita"
-				},
-				{
-					"value": "Papagaio"
-				},
-				{
-					"value": "Cacatua"
-				},
-				{
-					"value": "Agapornis"
-				},
-				{
-					"value": "Arara"
-				},
-				{
-					"value": "Finch"
-				}
-			]
-		}
-	],
-	"size": [
-		{
-			"value": "P"
-		},
-		{
-			"value": "M"
-		},
-		{
-			"value": "G"
-		}
-	],
-	"sexo": [
-		{
-			"value": "M"
-		},
-		{
-			"value": "F"
-		}
-	]
+  "species": [
+    {
+      "value": "Cachorro"
+    },
+    {
+      "value": "Gato"
+    },
+    {
+      "value": "Passaro"
+    }
+  ],
+  "animals": [
+    {
+      "species": "Cachorro",
+      "breeds": [
+        {
+          "value": "Labrador"
+        },
+        {
+          "value": "Poodle"
+        },
+        {
+          "value": "Bulldog"
+        },
+        {
+          "value": "Dachshund"
+        },
+        {
+          "value": "Golden Retriever"
+        },
+        {
+          "value": "Chihuahua"
+        },
+        {
+          "value": "Boxer"
+        },
+        {
+          "value": "Shih Tzu"
+        }
+      ]
+    },
+    {
+      "species": "Gato",
+      "breeds": [
+        {
+          "value": "Siamês"
+        },
+        {
+          "value": "Persa"
+        },
+        {
+          "value": "Bengal"
+        },
+        {
+          "value": "Maine Coon"
+        },
+        {
+          "value": "Ragdoll"
+        },
+        {
+          "value": "British Shorthair"
+        },
+        {
+          "value": "Scottish Fold"
+        },
+        {
+          "value": "Siamese"
+        }
+      ]
+    },
+    {
+      "species": "Passaro",
+      "breeds": [
+        {
+          "value": "Canário"
+        },
+        {
+          "value": "Periquito"
+        },
+        {
+          "value": "Calopsita"
+        },
+        {
+          "value": "Papagaio"
+        },
+        {
+          "value": "Cacatua"
+        },
+        {
+          "value": "Agapornis"
+        },
+        {
+          "value": "Arara"
+        },
+        {
+          "value": "Finch"
+        }
+      ]
+    }
+  ],
+  "size": [
+    {
+      "value": "P"
+    },
+    {
+      "value": "M"
+    },
+    {
+      "value": "G"
+    }
+  ],
+  "sexo": [
+    {
+      "value": "M"
+    },
+    {
+      "value": "F"
+    }
+  ]
 }
