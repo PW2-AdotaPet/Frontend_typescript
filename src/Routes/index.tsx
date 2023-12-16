@@ -10,9 +10,10 @@ import Register from "../Components/Pages/Register";
 import EditAccount from "../Components/Pages/EditAccount";
 import DonatedPet from "../Components/Pages/DonatedPet";
 import AdoptedPet from "../Components/Pages/AdoptedPet";
+import EditDonate from "../Components/Pages/EditDonate";
+import ImageAccount from "../Components/Pages/ImageAccount";
 
 import { useAuth } from "../Context/AuthContext";
-import EditDonate from '../Components/Pages/EditDonate';
 
 function RoutesContent() {
   const { token } = useAuth();
@@ -39,12 +40,16 @@ function RoutesContent() {
         element={isAuthenticated ? <Pet /> : <Navigate to="/login" />}
       />
       <Route
-        path="/conta/*"
+        path="/conta"
         element={isAuthenticated ? <Account /> : <Navigate to="/login" />}
       />
       <Route
         path="/conta/editar"
         element={isAuthenticated ? <EditAccount /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/conta/foto"
+        element={isAuthenticated ? <ImageAccount /> : <Navigate to="/login" />}
       />
       <Route
         path="/doar"
@@ -58,10 +63,10 @@ function RoutesContent() {
         path="/doados"
         element={isAuthenticated ? <DonatedPet /> : <Navigate to="/login" />}
       />
-        <Route
-          path="/doados/editar"
-          element={isAuthenticated ? <EditDonate /> : <Navigate to="/login" />}
-        />
+      <Route
+        path="/doados/editar"
+        element={isAuthenticated ? <EditDonate /> : <Navigate to="/login" />}
+      />
       <Route
         path="/adotados"
         element={isAuthenticated ? <AdoptedPet /> : <Navigate to="/login" />}

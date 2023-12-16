@@ -18,6 +18,7 @@
 .success {
     background: var(--blue-200);
     color: var(--white-200);
+    border: 2px solid var(--blue-200);
 }
 
 .outline {
@@ -29,6 +30,7 @@
 .danger {
     background: var(--red);
     color: var(--white-200);
+    border: 2px solid var(--red);
 }
 
 .auth {
