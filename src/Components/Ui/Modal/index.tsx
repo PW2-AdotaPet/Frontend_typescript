@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import DividerContainer from "../../Layouts/DividerContainer";
 import Button from "../Button";
 
-function Modal({ contentText, isOpen, handle }: any) {
+function Modal({ children, isOpen, handle }: any) {
   return (
     <>
       {isOpen && (
@@ -19,14 +19,14 @@ function Modal({ contentText, isOpen, handle }: any) {
             initial={{ y: "-100%" }}
             animate={{ y: "0%" }}
           >
-            <p>{contentText}</p>
+            {children}
             <DividerContainer>
               <Button
                 customClass="outline"
                 name="Cancelar"
                 handle={() => isOpen(false)}
               />
-              <Button customClass="success" name="Certeza" handle={handle} />
+              <Button customClass="success" name="Confirmar" handle={handle} />
             </DividerContainer>
           </motion.div>
         </motion.div>

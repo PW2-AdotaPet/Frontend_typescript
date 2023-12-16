@@ -79,7 +79,7 @@ function Account() {
         Authorization: `Bearer ${token}`,
       },
     });
-    logout()
+    logout();
   };
 
   return (
@@ -104,7 +104,7 @@ function Account() {
           <Button
             name="Editar Conta"
             customClass="outline"
-            handle={() => navigate("editar", {state: {user}})}
+            handle={() => navigate("editar", { state: { user } })}
           />
           <Button
             name="Apagar Conta"
@@ -114,11 +114,9 @@ function Account() {
           <Button name="Sair" customClass="danger" handle={logout} />
         </DividerContainer>
         {openModal && (
-          <Modal
-            contentText="Tem certeza que deseja apagar sua conta?"
-            isOpen={setOpenModal}
-            handle={handleDeleteAccount}
-          />
+          <Modal isOpen={setOpenModal} handle={handleDeleteAccount}>
+            <p>Deseja apagar sua conta?</p>
+          </Modal>
         )}
       </Container>
     </Container>
