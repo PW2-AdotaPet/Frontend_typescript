@@ -4,8 +4,12 @@ import Button from "../Button";
 import { useNavigate } from "react-router-dom";
 import DividerContainer from "../../Layouts/DividerContainer";
 
+import { useAuth } from "../../../Context/AuthContext";
+
 function BoxImage() {
   const navigate = useNavigate();
+
+  const {token} = useAuth()
 
   const [fileImage, setFileImage] = useState<File | null>(null);
 
@@ -17,9 +21,41 @@ function BoxImage() {
 
   const handleUploadImage = async () => {
     if (fileImage) {
+
+      let loggedUser = await fetch("http://localhost:8000/api/users/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+
+      let loggedUserJSON = await loggedUser.json()
+      let userProfileId = loggedUserJSON.profile.id
+
       const formData = new FormData();
-      formData.append("file", fileImage);
-      console.log(formData);
+      formData.append("picture", fileImage);
+
+      fetch(`http://localhost:8000/api/profiles/${userProfileId}/`, {
+					method: "PATCH",
+					body: formData,
+					headers: {
+						Authorization:
+							`Bearer ${token}`,
+					},
+				})
+					.then((response) => {
+						if (response.ok) {
+							return response.json();
+						}
+						throw new Error("Erro ao enviar imagem");
+					})
+					.then((data) => {
+						console.log("Imagem enviada com sucesso:", data);
+            navigate("/conta")
+					})
+					.catch((error) => {
+						console.error("Erro:", error);
+					});
     } else {
       console.warn("Deu ruim!");
     }
@@ -34,7 +70,7 @@ function BoxImage() {
       <input
         id="image"
         type="file"
-        accept="imagem/*"
+        accept="image/*"
         onChange={handleFileChange}
       />
       <DividerContainer>
