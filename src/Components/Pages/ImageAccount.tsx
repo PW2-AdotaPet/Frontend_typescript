@@ -1,5 +1,4 @@
 import Container from "../Layouts/Container";
-import Main from "../Layouts/Main";
 import NavBar from "../Layouts/NavBar";
 import BoxImage from "../Ui/BoxImage";
 
@@ -8,9 +7,7 @@ function ImageAccount() {
     <Container>
       <NavBar />
       <Container customClass="columnSpace">
-        <Main customClass="column">
-          <BoxImage />
-        </Main>
+        <BoxImage />
       </Container>
     </Container>
   );

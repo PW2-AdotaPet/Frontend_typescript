@@ -1,7 +1,7 @@
-import { FaRegCalendar } from "react-icons/fa";
 import { FiSmartphone } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { BiUser } from "react-icons/bi";
+import imageUser from "../../Assets/Images/user.png";
 
 import Container from "../Layouts/Container";
 import DividerContainer from "../Layouts/DividerContainer";
@@ -87,7 +87,13 @@ function Account() {
       <NavBar />
       <Container customClass="columnSpace">
         <DividerContainer customClass="center">
-          <Profile image={user?.profile.picture} />
+          <Profile
+            image={
+              user?.profile.picture !== "http://localhost:8000/api/users/me/"
+                ? user?.profile.picture
+                : imageUser
+            }
+          />
         </DividerContainer>
         <DividerContainer customClass="column">
           {inputs.map((element: any, index: number) => (
