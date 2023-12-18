@@ -5,13 +5,28 @@ import { FiFilter } from "react-icons/fi";
 import Style from "./style.module.css";
 import { motion } from "framer-motion";
 
+
+import { useAuth } from "../../../Context/AuthContext";
+
 function SearchBar({ setData }: any) {
+
+  const { token } = useAuth();
   const [value, setValue] = useState<string>("");
   const searchFunction = () => {
-    // fetch('http://localhost:8000/api/pets/')
-    // .then(response => response.json())
-    // .then(result => setData(result))
-    // .catch(error => console.error('Error fetching data:', error));
+    fetch('http://localhost:8000/api/pets/', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (value.length > 0) {
+        let filteredResult = result.filter((element: {especie: string, raça: string}) => element.especie.toUpperCase().includes(value.toUpperCase()) || element.raça.toUpperCase().includes(value.toUpperCase()))
+        return setData(filteredResult)
+      }
+      return setData(result)
+    })
+    .catch(error => console.error('Error fetching data:', error));
     setData([]);
   };
 
