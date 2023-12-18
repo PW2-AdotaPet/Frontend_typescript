@@ -34,7 +34,7 @@ function Donate() {
   const [sexo, setSexo] = useState("");
   const [altura, setAltura] = useState("");
   const [comprimento, setComprimento] = useState("");
-  const [foto, setFoto] = useState("");
+  const [fileImage, setFileImage] = useState<File | null>(null);
   const [idade, setIdade] = useState("");
 
   const [racas, setRacas] = useState<Breed[]>([])
@@ -45,8 +45,14 @@ function Donate() {
     setEspecie(specieSelected)
   }
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFileImage(e.target.files[0]);
+    }
+  };
+
   const handleDonate = async () => {
-    await fetch(`http://localhost:8000/api/pets/${data.id}/`, {
+    let response = await fetch(`http://localhost:8000/api/pets/${data.id}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -62,6 +68,28 @@ function Donate() {
         idade: idade === "" ? data.idade : idade,
       }),
     });
+
+    let responseJSON = await response.json()
+    let createdPetID = responseJSON.id
+
+    let formData = new FormData()
+
+    if (fileImage) {
+      formData.append("image", fileImage);
+      formData.append("pet", createdPetID);
+
+      let petPictures = await fetch("http://localhost:8000/api/pictures/", {headers: {Authorization: `Bearer ${token}`}}).then((response) => response.json())
+      let currentPetPicture = petPictures.filter((p: {pet: number}) => p.pet === createdPetID)[0]
+      let currentPetPictureID = currentPetPicture.id
+
+      await fetch(`http://localhost:8000/api/pictures/${currentPetPictureID}/`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      })
+    }
     navigate("/doados")
   };
 
@@ -109,10 +137,11 @@ function Donate() {
             onChange={(value: string) => setComprimento(value)}
             Value={data.comprimento}
           />
-          <InputDonate
-            label="Foto"
+          <input
+            id="image"
             type="file"
-            onChange={(value: string) => setFoto(value)}
+            accept="image/*"
+            onChange={handleFileChange}
           />
           <InputDonate
             label="Idade"

@@ -19,7 +19,7 @@ function Donate() {
   const [sexo, setSexo] = useState("");
   const [altura, setAltura] = useState("");
   const [comprimento, setComprimento] = useState("");
-  const [foto, setFoto] = useState("");
+  const [fileImage, setFileImage] = useState<File | null>(null);
   const [idade, setIdade] = useState("");
   const peso = 3.2;
 
@@ -29,8 +29,14 @@ function Donate() {
 
   const navigate = useNavigate()
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFileImage(e.target.files[0]);
+    }
+  };
+
   const handleDonate = async () => {
-    await fetch("http://localhost:8000/api/pets/", {
+    let response = await fetch("http://localhost:8000/api/pets/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,6 +53,24 @@ function Donate() {
         peso,
       }),
     });
+
+    let responseJSON = await response.json()
+    let createdPetID = responseJSON.id
+
+    let formData = new FormData()
+
+    if (fileImage) {
+      formData.append("image", fileImage);
+      formData.append("pet", createdPetID);
+
+      await fetch("http://localhost:8000/api/pictures/", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      })
+    }
     navigate("/doados")
   };
 
@@ -92,10 +116,11 @@ function Donate() {
             type="text"
             onChange={(value: string) => setComprimento(value)}
           />
-          <InputDonate
-            label="Foto"
+          <input
+            id="image"
             type="file"
-            onChange={(value: string) => setFoto(value)}
+            accept="image/*"
+            onChange={handleFileChange}
           />
           <InputDonate
             label="Idade"
