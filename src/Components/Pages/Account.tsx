@@ -7,6 +7,7 @@ import Container from "../Layouts/Container";
 import DividerContainer from "../Layouts/DividerContainer";
 import Button from "../Ui/Button";
 import Profile from "../Ui/Profile";
+import Modal from "../Ui/Modal";
 import Input from "../Forms/Input";
 import NavBar from "../Layouts/NavBar";
 
@@ -14,7 +15,6 @@ import React, { useState, useEffect } from "react";
 
 import { useAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import Modal from "../Ui/Modal";
 
 interface UserData {
   username: string;

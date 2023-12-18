@@ -23,3 +23,13 @@
   line-height: 1em;
   background: none;
 }
+
+.Form {
+  width: 100%;
+}
+
+.inputError {
+color: var(--red);
+font-size: 0.8em;
+margin: 0.5em;
+}
