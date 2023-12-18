@@ -2,9 +2,12 @@ import { NavLink } from "react-router-dom";
 import { BiHeart, BiSearch, BiUser } from "react-icons/bi";
 import { LuDog } from "react-icons/lu";
 import { PiPawPrint, PiHandHeart } from "react-icons/pi";
+import menu from "../../../../src/Assets/Images/menu.svg";
+import React, { useState } from "react";
 
 import Style from "./style.module.css";
 import NavItem from "./NavItem";
+import { transform } from "@babel/core";
 
 function NavBar() {
   const list = [
@@ -35,10 +38,37 @@ function NavBar() {
     },
   ];
 
+  const [toggle, setToggle] = useState(true);
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
+
   return (
-    <nav className={Style.container}>
+    <nav
+      className={Style.container}
+      style={
+        window.innerWidth >= 600
+          ? { transform: "none" }
+          : toggle
+          ? { transform: "translate(-400px)" }
+          : { transform: "none" }
+      }
+    >
       <div className={Style.navLinks}>
-        <h3>Logo</h3>
+        <h3></h3>
+        <img
+          src={menu}
+          alt="Ícone de navegação Hambúrguer"
+          onClick={handleClick}
+          style={
+            window.innerWidth >= 600
+              ? { transform: "none" }
+              : toggle
+              ? { transform: "translate(400px)" }
+              : { transform: "none" }
+          }
+          className={Style.menu}
+        />
         <div className={Style.items}>
           {list.map((element, index) => (
             <NavItem
