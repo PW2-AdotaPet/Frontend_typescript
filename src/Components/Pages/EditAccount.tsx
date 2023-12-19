@@ -153,21 +153,21 @@ function EditAccount() {
             label="Rua"
             placeholder="Digite o nome da sua rua"
             onChange={(value: string) => setStreet(value)}
-            Value={userData.profile.human_readable_address.street}
+            Value={userData.profile.human_readable_address ? userData.profile.human_readable_address.street : ""}
           />
           <InputDonate
             type="text"
             label="Cidade"
             placeholder="Digite o nome da sua cidade"
             onChange={(value: string) => setCity(value)}
-            Value={userData.profile.human_readable_address.city}
+            Value={userData.profile.human_readable_address ? userData.profile.human_readable_address.city : ""}
           />
           <InputDonate
             type="text"
             label="UF/Estado"
             placeholder="Digite o nome de seu estado"
             onChange={(value: string) => setState(value)}
-            Value={userData.profile.human_readable_address.state}
+            Value={userData.profile.human_readable_address ? userData.profile.human_readable_address.state : ""}
           />
           {/* <InputDonate
               type="file"
