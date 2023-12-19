@@ -22,8 +22,8 @@ function EditAccount() {
 
   const { token } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation()
-  const userData = location.state.user
+  const location = useLocation();
+  const userData = location.state.user;
 
   const handleEditAccount = async () => {
     const response = await fetch("http://localhost:8000/api/users/me", {
@@ -46,10 +46,10 @@ function EditAccount() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        "username": (username === "" ? userData.username : username),
-        "email": (email === "" ? userData.email : email),
-        "first_name":  (firstName === "" ? userData.first_name : firstName),
-        "last_name":  (lastName === "" ? userData.last_name : lastName),
+        username: username === "" ? userData.username : username,
+        email: email === "" ? userData.email : email,
+        first_name: firstName === "" ? userData.first_name : firstName,
+        last_name: lastName === "" ? userData.last_name : lastName,
       }),
     });
 
@@ -60,7 +60,7 @@ function EditAccount() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        "phone": (phone === "" ? userData.profile.phone : phone),
+        phone: phone === "" ? userData.profile.phone : phone,
       }),
     });
 
@@ -72,9 +72,16 @@ function EditAccount() {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          "street": (street === "" ? userData.profile.human_readable_address.street : street),
-          "city": (city === "" ? userData.profile.human_readable_address.city : city),
-          "state": (state === "" ? userData.profile.human_readable_address.state : state),
+          street:
+            street === ""
+              ? userData.profile.human_readable_address.street
+              : street,
+          city:
+            city === "" ? userData.profile.human_readable_address.city : city,
+          state:
+            state === ""
+              ? userData.profile.human_readable_address.state
+              : state,
         }),
       });
     } else {
@@ -153,27 +160,34 @@ function EditAccount() {
             label="Rua"
             placeholder="Digite o nome da sua rua"
             onChange={(value: string) => setStreet(value)}
-            Value={userData.profile.human_readable_address ? userData.profile.human_readable_address.street : ""}
+            Value={
+              userData.profile.human_readable_address
+                ? userData.profile.human_readable_address.street
+                : ""
+            }
           />
           <InputDonate
             type="text"
             label="Cidade"
             placeholder="Digite o nome da sua cidade"
             onChange={(value: string) => setCity(value)}
-            Value={userData.profile.human_readable_address ? userData.profile.human_readable_address.city : ""}
+            Value={
+              userData.profile.human_readable_address
+                ? userData.profile.human_readable_address.city
+                : ""
+            }
           />
           <InputDonate
             type="text"
             label="UF/Estado"
             placeholder="Digite o nome de seu estado"
             onChange={(value: string) => setState(value)}
-            Value={userData.profile.human_readable_address ? userData.profile.human_readable_address.state : ""}
+            Value={
+              userData.profile.human_readable_address
+                ? userData.profile.human_readable_address.state
+                : ""
+            }
           />
-          {/* <InputDonate
-              type="file"
-              label="Foto de perfil"
-              placeholder="Digite seu username"
-            /> Depois eu implemento isso! */}
         </FormContainer>
         <DividerContainer customClass="">
           <Button

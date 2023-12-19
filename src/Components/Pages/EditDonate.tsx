@@ -128,13 +128,13 @@ function Donate() {
           />
           <InputDonate
             label="Altura"
-            type="text"
+            type="number"
             onChange={(value: string) => setAltura(value)}
             Value={data.altura}
           />
           <InputDonate
             label="Comprimento"
-            type="text"
+            type="number"
             onChange={(value: string) => setComprimento(value)}
             Value={data.comprimento}
           />

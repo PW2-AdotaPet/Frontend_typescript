@@ -121,13 +121,13 @@ function Donate() {
           <InputDonate
             label="Altura"
             placeholder="Digite a altura em centímetros (cm)"
-            type="text"
+            type="number"
             onChange={(value: string) => setAltura(value)}
           />
           <InputDonate
             label="Comprimento"
             placeholder="Digite o comprimento em centímetros (cm)"
-            type="text"
+            type="number"
             onChange={(value: string) => setComprimento(value)}
           />
           <div className={Style.container}>

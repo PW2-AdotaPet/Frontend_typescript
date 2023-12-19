@@ -9,6 +9,7 @@ function Input({ name, type, status, value, placeholder, Icon }: any) {
       <div className={Style.input}>
         <Icon size={24} />
         <input
+          required
           type={type}
           disabled={status}
           id={name}

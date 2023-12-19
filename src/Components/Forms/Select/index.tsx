@@ -14,7 +14,7 @@ function Select({ options, title, placeholder, onChange, Value }: any) {
   return (
     <div className={Style.container}>
       <label htmlFor={title}>{title}</label>
-      <select id={title} className={Style.select} onChange={(e) => {handleInputChange(e.target.value)}}>
+      <select id={title} className={Style.select} required onChange={(e) => {handleInputChange(e.target.value)}}>
         <option selected={true} disabled={true}>
           {Value ? Value : placeholder}
         </option>
