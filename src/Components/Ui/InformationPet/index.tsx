@@ -13,21 +13,20 @@ function InformationPet({ data }: any) {
   }
 
   const handleAdopte = async () => {
-
-  await fetch(`http://localhost:8000/api/pets/${data.id}/adopt/`, {
+    await fetch(`http://localhost:8000/api/pets/${data.id}/adopt/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-      }
-    })
+      },
+    });
 
-    navigate("/adotados")
-  }
+    navigate("/adotados");
+  };
 
   return (
     <>
-      <DividerContainer>
+      <DividerContainer customClass="containerAdotar">
         {data.pictures.map((picture: any) => (
           <div
             key={picture.id}

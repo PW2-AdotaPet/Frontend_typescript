@@ -73,11 +73,7 @@ function Login() {
                 <p className={Style.inputError}>{errors.password?.message}</p>
               )}
               <DividerContainer>
-                <Button
-                  name="Entrar"
-                  customClass="success"
-                  type="submit"
-                />
+                <Button name="Entrar" customClass="success" type="submit" />
               </DividerContainer>
             </DividerContainer>
           </form>

@@ -1,32 +1,39 @@
 .container {
-    display: flex;
-    align-items: flex-start;
-    align-self: stretch;
-    gap: 0.75em;
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: 0.75em;
+}
+
+.containerAdotar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .max {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .column {
-    flex-direction: column;
-    gap: 1.5em;
+  flex-direction: column;
+  gap: 1.5em;
 }
 
 .columnMin {
-    flex-direction: column;
-    gap: 1em;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .columnCenter {
-    flex-direction: column;
-    gap: 1.5em;
-    align-items: center;
-    justify-content: center;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: center;
+  justify-content: center;
 }
