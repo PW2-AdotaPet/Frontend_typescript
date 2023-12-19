@@ -1,3 +1,4 @@
+import Style  from "../Forms/InputDonate/style.module.css"
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -137,12 +138,15 @@ function Donate() {
             onChange={(value: string) => setComprimento(value)}
             Value={data.comprimento}
           />
-          <input
-            id="image"
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
+         <div className={Style.container}>
+            <label htmlFor="image">Imagem</label>
+            <input
+              id="image"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+          </div>
           <InputDonate
             label="Idade"
             type="number"
