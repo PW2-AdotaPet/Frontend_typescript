@@ -67,9 +67,11 @@ function Donate() {
         idade,
       }),
     });
-
+    
     let responseJSON = await response.json()
     let createdPetID = responseJSON.id
+
+    console.log(responseJSON)
 
     let formData = new FormData()
 

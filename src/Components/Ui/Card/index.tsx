@@ -160,7 +160,7 @@ function Card({ data, handleFavorite, handleRemoveFavorite }: any) {
       <div className={Style.infoCard}>
         <h2>Sobre o Pet</h2>
         <p>
-          <span>Medidas: </span>A: {data.altura}cm | C: {data.comprimento}cm
+          <span>Medidas: </span>A: {data.altura} cm | C: {data.comprimento} cm
         </p>
       </div>
     </div>
