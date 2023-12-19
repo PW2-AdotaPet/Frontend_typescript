@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { FiFilter } from "react-icons/fi";
 
 import Style from "./style.module.css";
 import { motion } from "framer-motion";
@@ -46,7 +45,7 @@ function SearchBar({ setData }: any) {
         className={Style.button}
         onClick={searchFunction}
       >
-        <FiFilter size={24} />
+        <BsSearch size={24} />
       </motion.button>
     </div>
   );
