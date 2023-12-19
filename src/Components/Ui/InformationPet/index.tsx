@@ -100,12 +100,6 @@ function InformationPet({ data }: any) {
           </p>
         </div>
       </DividerContainer>
-      <DividerContainer customClass="max">
-        <div
-          className={Style.map}
-          style={{ backgroundImage: `url(${data.image})` }}
-        ></div>
-      </DividerContainer>
       <DividerContainer>
         <Button name="Cancelar" customClass="outline" handle={goBack} />
         <Button name="Adotar" customClass="success" handle={handleAdopte} />
