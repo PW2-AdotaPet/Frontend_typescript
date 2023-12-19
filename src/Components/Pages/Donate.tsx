@@ -1,3 +1,4 @@
+import Style  from "../Forms/InputDonate/style.module.css"
 import FormContainer from "../Forms/FormContainer";
 import InputDonate from "../Forms/InputDonate";
 import Select from "../Forms/Select";
@@ -116,12 +117,15 @@ function Donate() {
             type="text"
             onChange={(value: string) => setComprimento(value)}
           />
-          <input
-            id="image"
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
+          <div className={Style.container}>
+            <label htmlFor="image">Imagem</label>
+            <input
+              id="image"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+          </div>
           <InputDonate
             label="Idade"
             placeholder="0"
