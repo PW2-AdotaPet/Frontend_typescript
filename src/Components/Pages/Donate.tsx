@@ -13,6 +13,15 @@ import { useAuth } from "../../Context/AuthContext";
 import Animals from "../../Assets/Scripts/Animals.json";
 import { useNavigate } from "react-router-dom";
 
+interface Breed {
+  value: string;
+}
+
+interface Animal {
+  species: string;
+  breeds: Breed[];
+}
+
 function Donate() {
   const [especie, setEspecie] = useState("");
   const [raca, setRaca] = useState("");
@@ -22,11 +31,16 @@ function Donate() {
   const [comprimento, setComprimento] = useState("");
   const [fileImage, setFileImage] = useState<File | null>(null);
   const [idade, setIdade] = useState("");
-  const peso = 3.2;
 
   const { token } = useAuth();
 
-  const racas = [{ value: "Pitbull" }, { value: "Pug" }, { value: "Pinscher" }];
+  const [racas, setRacas] = useState<Breed[]>([])
+
+  const handleChangeRacas = (specieSelected: string) => {
+    const racaSelected =  Animals.animals.find((animal: Animal) => animal.species === specieSelected)?.breeds || []
+    setRacas(racaSelected)
+    setEspecie(specieSelected)
+  }
 
   const navigate = useNavigate()
 
@@ -51,7 +65,6 @@ function Donate() {
         altura,
         comprimento,
         idade,
-        peso,
       }),
     });
 
@@ -85,7 +98,7 @@ function Donate() {
             options={Animals.species}
             title="Espécie"
             placeholder="Selecione a espécie"
-            onChange={(value: string) => setEspecie(value)}
+            onChange={(value: string) => handleChangeRacas(value)}
           />
           <Select
             options={racas}
