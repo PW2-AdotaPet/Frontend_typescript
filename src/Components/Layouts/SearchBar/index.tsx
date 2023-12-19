@@ -12,8 +12,17 @@ function SearchBar({ setData }: any) {
 
   const { token } = useAuth();
   const [value, setValue] = useState<string>("");
+
+  const fetchURLByRoute = {
+    "/adotar": "http://localhost:8000/api/pets/",
+    "/doados": "http://localhost:8000/api/pets/donated/",
+    "/adotados": "http://localhost:8000/api/pets/adopted/",
+  }
+  const pagePathName = window.location.pathname
+
   const searchFunction = () => {
-    fetch('http://localhost:8000/api/pets/', {
+
+    fetch(fetchURLByRoute[pagePathName as keyof typeof fetchURLByRoute], {
       headers: {
         Authorization: `Bearer ${token}`
       }
